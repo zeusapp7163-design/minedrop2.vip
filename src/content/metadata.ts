@@ -1,4 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import {
+  getSeoPagePath,
+  type SeoPageContent,
+} from "./seoPages";
 import type { LandingConfig } from "./types";
 
 export function buildMetadata(config: LandingConfig): Metadata {
@@ -40,6 +44,49 @@ export function buildMetadata(config: LandingConfig): Metadata {
       ],
       apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
       shortcut: ["/favicon.ico"],
+    },
+  };
+}
+
+export function buildSeoPageMetadata(
+  config: LandingConfig,
+  page: SeoPageContent,
+): Metadata {
+  const base = buildMetadata(config);
+  const canonical = `${config.site.url}${getSeoPagePath(config.locale, page.slug)}`;
+  const ruPath = `${config.site.url}${getSeoPagePath("ru", page.slug)}`;
+  const enPath = `${config.site.url}${getSeoPagePath("en", page.slug)}`;
+
+  return {
+    ...base,
+    title: page.title,
+    description: page.description,
+    keywords: [
+      ...config.site.keywords,
+      page.title,
+      `${config.game.name} ${page.slug}`,
+    ],
+    alternates: {
+      canonical,
+      languages: {
+        ru: ruPath,
+        en: enPath,
+        "x-default": ruPath,
+      },
+    },
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      url: canonical,
+      title: page.title,
+      description: page.description,
+      publishedTime: config.site.published,
+      modifiedTime: config.site.updated,
+    },
+    twitter: {
+      ...base.twitter,
+      title: page.title,
+      description: page.description,
     },
   };
 }

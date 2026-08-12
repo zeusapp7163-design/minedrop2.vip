@@ -1,9 +1,18 @@
+import Link from "next/link";
 import { ButtonLink, Container } from "@/components/ui";
-import type { LandingConfig } from "@/content";
+import { getSeoNavigation, type LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Footer({ config }: { config: LandingConfig }) {
+export function Footer({
+  config,
+  isHome = true,
+}: {
+  config: LandingConfig;
+  isHome?: boolean;
+}) {
   const { site, ui } = config;
+  const seoNavigation = getSeoNavigation(config.locale);
+  const playHref = isHome ? "#play" : `${config.path}#play`;
 
   return (
     <footer className={styles.footer}>
@@ -15,7 +24,21 @@ export function Footer({ config }: { config: LandingConfig }) {
             </p>
             <p className={styles.footerText}>{ui.footer.text}</p>
           </div>
-          <ButtonLink href="#play">{ui.footer.cta}</ButtonLink>
+          <nav
+            className={styles.footerNav}
+            aria-label={
+              config.locale === "ru"
+                ? "Материалы о Mine Drop 2"
+                : "Mine Drop 2 guides"
+            }
+          >
+            {seoNavigation.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <ButtonLink href={playHref}>{ui.footer.cta}</ButtonLink>
         </div>
         <p className={styles.footerLegal}>
           {ui.footer.legal} © {new Date().getFullYear()} {site.domain}

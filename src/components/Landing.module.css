@@ -1336,6 +1336,62 @@
   }
 }
 
+/* SEO guide hub */
+.guideGrid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.guideCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.35rem 0.85rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--surface);
+}
+
+.guideCard:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+.guideIndex {
+  grid-row: 1 / span 3;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 850;
+}
+
+.guideCard strong {
+  font-size: 0.95rem;
+}
+
+.guideCard p {
+  margin: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.guideAction {
+  margin-top: 0.25rem;
+  color: #9ba1ab;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+@media (min-width: 680px) {
+  .guideGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* Footer */
 .footer {
   padding-block: 2.5rem 3rem;
@@ -1357,6 +1413,19 @@
   line-height: 1.65;
 }
 
+.footerNav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.footerNav a:hover {
+  color: var(--fg);
+}
+
 .footerLegal {
   margin: 1.5rem 0 0;
   padding-top: 1.1rem;
@@ -1372,9 +1441,10 @@
 
 @media (min-width: 720px) {
   .footerMain {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(18rem, 1fr) auto auto;
     align-items: center;
-    justify-content: space-between;
+    gap: 2rem;
   }
 }
 

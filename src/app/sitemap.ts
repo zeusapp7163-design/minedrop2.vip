@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getLandingConfig } from "@/content";
+import {
+  getLandingConfig,
+  getSeoPagePath,
+  SEO_PAGE_SLUGS,
+} from "@/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const { site } = getLandingConfig("ru");
@@ -9,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "x-default": site.url,
   };
 
-  return [
+  const homePages: MetadataRoute.Sitemap = [
     {
       url: site.url,
       lastModified: new Date(site.updated),
@@ -25,4 +29,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages },
     },
   ];
+
+  const guidePages: MetadataRoute.Sitemap = SEO_PAGE_SLUGS.flatMap((slug) => {
+    const ru = `${site.url}${getSeoPagePath("ru", slug)}`;
+    const en = `${site.url}${getSeoPagePath("en", slug)}`;
+    const alternates = {
+      languages: {
+        ru,
+        en,
+        "x-default": ru,
+      },
+    };
+
+    return [
+      {
+        url: ru,
+        lastModified: new Date(site.updated),
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+        alternates,
+      },
+      {
+        url: en,
+        lastModified: new Date(site.updated),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+        alternates,
+      },
+    ];
+  });
+
+  return [...homePages, ...guidePages];
 }
