@@ -163,7 +163,7 @@
 }
 
 .heroContainer {
-  width: min(calc(100% - (var(--page-gutter) * 2)), 72rem);
+  width: min(calc(100% - (var(--page-gutter) * 2)), 80rem);
   max-width: none;
 }
 
@@ -177,9 +177,24 @@
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background:
-    radial-gradient(circle at 15% 15%, rgba(121, 200, 238, 0.1), transparent 32%),
-    linear-gradient(145deg, #13151b 0%, #0d0e12 72%);
-  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.36);
+    radial-gradient(circle at 12% 0%, rgba(121, 200, 238, 0.12), transparent 30%),
+    radial-gradient(circle at 95% 100%, rgba(135, 87, 217, 0.09), transparent 32%),
+    linear-gradient(145deg, #14161c 0%, #0d0e12 72%);
+  box-shadow:
+    0 1.5rem 5rem rgba(0, 0, 0, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.heroPanel::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 8%;
+  left: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(121, 200, 238, 0.55), transparent);
+  pointer-events: none;
 }
 
 .heroMain {
@@ -265,11 +280,29 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+  width: 100%;
   margin: 0;
 }
 
 .heroActions a {
-  min-width: 8.6rem;
+  width: 100%;
+  min-height: 3.4rem;
+  padding-inline: 1.5rem;
+  border-color: rgba(255, 220, 84, 0.45);
+  background: linear-gradient(135deg, #ffe169, #f5c518 58%, #e9aa08);
+  box-shadow:
+    0 0.75rem 1.8rem rgba(245, 197, 24, 0.2),
+    inset 0 1px rgba(255, 255, 255, 0.55);
+  font-size: 0.96rem;
+  font-weight: 900;
+}
+
+.heroActions a:hover {
+  background: linear-gradient(135deg, #ffea8e, #ffd133 58%, #f1b512);
+  box-shadow:
+    0 1rem 2.2rem rgba(245, 197, 24, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.65);
+  transform: translateY(-2px);
 }
 
 .heroFacts {
@@ -374,6 +407,30 @@
   .heroActions a {
     min-height: 4.25rem;
     min-width: 10rem;
+  }
+}
+
+@media (min-width: 1120px) {
+  .heroPanel {
+    padding: 1.6rem;
+  }
+
+  .heroMain {
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+
+  .heroPoster {
+    width: 230px;
+  }
+
+  .heroTitle {
+    font-size: 3.2rem;
+  }
+
+  .heroLead {
+    max-width: 40rem;
+    font-size: 1.04rem;
   }
 }
 
