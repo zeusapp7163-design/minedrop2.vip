@@ -144,6 +144,11 @@
     clamp(2.4rem, 5vw, 4rem);
 }
 
+.heroContainer {
+  width: min(calc(100% - (var(--page-gutter) * 2)), 80rem);
+  max-width: none;
+}
+
 .heroPanel {
   position: relative;
   display: grid;
@@ -290,20 +295,31 @@
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.42);
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .heroPanel {
-    grid-template-columns: minmax(0, 0.92fr) minmax(25rem, 1.08fr);
+    grid-template-columns: minmax(0, 0.82fr) minmax(30rem, 1.18fr);
+    padding: clamp(2.25rem, 3.5vw, 3.25rem);
   }
 
   .heroVisual {
     aspect-ratio: auto;
-    min-height: clamp(24rem, 38vw, 27rem);
+    min-height: clamp(26rem, 35vw, 29rem);
   }
 
   .heroCover {
     width: 9.75rem;
     left: 1.25rem;
     bottom: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroTitle {
+    font-size: 5.5rem;
+  }
+
+  .heroLead {
+    font-size: 1.16rem;
   }
 }
 

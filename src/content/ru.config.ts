@@ -8,7 +8,7 @@ export const ruConfig = {
   site: {
     ...SHARED_SITE,
     ogLocale: "ru_RU",
-    title: "Mine Drop 2 — играть онлайн | Официальный сайт слота",
+    title: "Mine Drop 2 — Играть онлайн | Официальный сайт слота",
     description:
       "Mine Drop 2 от Paperclip Gaming: обзор, демо и запуск онлайн. RTP 96.70%, max ×50000, dig-burst, Blast Ore, Ender Eye и Bonus Buy.",
     keywords: [

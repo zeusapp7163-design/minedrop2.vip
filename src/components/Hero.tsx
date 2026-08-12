@@ -8,7 +8,7 @@ export function Hero({ config }: { config: LandingConfig }) {
 
   return (
     <section className={styles.hero} aria-labelledby="page-title">
-      <Container>
+      <Container className={styles.heroContainer}>
         <div className={styles.heroPanel}>
           <div className={styles.heroCopy}>
             <p className={styles.heroBadge}>
