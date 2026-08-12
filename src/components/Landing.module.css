@@ -66,11 +66,11 @@
 }
 
 .headerCta {
-  display: none;
+  display: inline-flex;
 }
 
 .localeSwitch {
-  display: inline-flex;
+  display: none;
   align-items: center;
   padding: 0.18rem;
   border: 1px solid var(--line);
@@ -126,9 +126,27 @@
   border-bottom: 0;
 }
 
+.drawer .drawerLocale {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 0.8rem;
+}
+
+.drawer .drawerLocale a {
+  display: grid;
+  min-width: 2.5rem;
+  min-height: 2rem;
+  padding: 0;
+  border-bottom: 0;
+}
+
 @media (min-width: 1024px) {
   .nav {
     display: flex;
+  }
+
+  .localeSwitch {
+    display: inline-flex;
   }
 
   .menuButton {
@@ -320,12 +338,6 @@
 
   .heroLead {
     font-size: 1.16rem;
-  }
-}
-
-@media (min-width: 620px) {
-  .headerCta {
-    display: inline-flex;
   }
 }
 

@@ -104,6 +104,28 @@ export function Header({
                 {item.label}
               </a>
             ))}
+            <div
+              className={`${styles.localeSwitch} ${styles.drawerLocale}`}
+              role="group"
+              aria-label={header.languageLabel}
+            >
+              <Link
+                href="/"
+                className={locale === "ru" ? styles.localeActive : undefined}
+                aria-current={locale === "ru" ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                RU
+              </Link>
+              <Link
+                href="/en"
+                className={locale === "en" ? styles.localeActive : undefined}
+                aria-current={locale === "en" ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                EN
+              </Link>
+            </div>
           </nav>
         ) : null}
       </header>
