@@ -53,6 +53,8 @@ export const PARTNER_BASE = [
   },
 ] as const;
 
+export const AFFILIATE_LINKS_ENABLED = false;
+
 export const PARTNER_DESTINATIONS: Record<string, string> = {
   "1win": "https://one-vv6649.com/casino/list?open=register&sub1=mine",
   jetton:

@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { Card, Container, Section, SectionHeader } from "@/components/ui";
-import type { LandingConfig } from "@/content";
+import {
+  AFFILIATE_LINKS_ENABLED,
+  type LandingConfig,
+} from "@/content";
 import { PromoCopyButton } from "@/components/PromoCopyButton";
 import styles from "./Landing.module.css";
 
@@ -76,13 +79,24 @@ export function Partners({ config }: { config: LandingConfig }) {
                 ) : (
                   <p className={styles.noPromo}>{partners.noPromo}</p>
                 )}
-                <a
-                  href={`/${partner.id}`}
-                  className={styles.offerCta}
-                  rel="nofollow sponsored noopener"
-                >
-                  {partners.play} {partner.name}
-                </a>
+                {AFFILIATE_LINKS_ENABLED ? (
+                  <a
+                    href={`/${partner.id}`}
+                    className={styles.offerCta}
+                    rel="nofollow sponsored noopener"
+                  >
+                    {partners.play} {partner.name}
+                  </a>
+                ) : (
+                  <span
+                    className={`${styles.offerCta} ${styles.offerCtaDisabled}`}
+                    aria-disabled="true"
+                  >
+                    {config.locale === "ru"
+                      ? "Ссылка временно отключена"
+                      : "Link temporarily disabled"}
+                  </span>
+                )}
                 <p className={styles.offerLegal}>{partners.legal}</p>
               </footer>
             </Card>

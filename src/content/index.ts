@@ -1,6 +1,9 @@
 import { enConfig } from "./en.config";
 import { ruConfig } from "./ru.config";
-import { PARTNER_DESTINATIONS } from "./shared";
+import {
+  AFFILIATE_LINKS_ENABLED,
+  PARTNER_DESTINATIONS,
+} from "./shared";
 import type { LandingConfig, Locale } from "./types";
 
 const configs: Record<Locale, LandingConfig> = {
@@ -12,7 +15,7 @@ export function getLandingConfig(locale: Locale) {
   return configs[locale];
 }
 
-export { PARTNER_DESTINATIONS };
+export { AFFILIATE_LINKS_ENABLED, PARTNER_DESTINATIONS };
 export {
   SEO_PAGE_SLUGS,
   getSeoNavigation,

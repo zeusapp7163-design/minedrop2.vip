@@ -1233,6 +1233,16 @@
   background: var(--accent-hot);
 }
 
+.offerCtaDisabled {
+  background: #262830;
+  color: #8d929c;
+  cursor: not-allowed;
+}
+
+.offerCtaDisabled:hover {
+  background: #262830;
+}
+
 .offerLegal {
   margin: 0.5rem 0 0;
   color: #a3a3a3;

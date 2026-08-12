@@ -1,7 +1,20 @@
 import { NextResponse } from "next/server";
-import { PARTNER_DESTINATIONS } from "@/content";
+import {
+  AFFILIATE_LINKS_ENABLED,
+  PARTNER_DESTINATIONS,
+} from "@/content";
 
 export function redirectToPartner(partner: string, request: Request) {
+  if (!AFFILIATE_LINKS_ENABLED) {
+    return NextResponse.json(
+      { error: "Partner links are temporarily unavailable." },
+      {
+        status: 410,
+        headers: { "Cache-Control": "no-store" },
+      },
+    );
+  }
+
   const destination = PARTNER_DESTINATIONS[partner];
 
   if (!destination) {
