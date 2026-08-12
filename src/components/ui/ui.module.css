@@ -42,11 +42,11 @@
 .title {
   margin: 0;
   max-width: 52rem;
-  font-family: var(--font-unbounded), sans-serif;
-  font-size: clamp(1.55rem, 3.4vw, 2.45rem);
-  font-weight: 650;
-  letter-spacing: -0.035em;
-  line-height: 1.12;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
   text-wrap: balance;
 }
 
