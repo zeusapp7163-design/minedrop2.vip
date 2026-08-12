@@ -13,7 +13,7 @@ export function Partners({ config }: { config: LandingConfig }) {
       className={styles.partnerSection}
       aria-labelledby="play-title"
     >
-      <Container>
+      <Container className={styles.partnerContainer}>
         <SectionHeader
           className={styles.partnerIntro}
           eyebrow={partners.eyebrow}

@@ -178,8 +178,8 @@
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(121, 200, 238, 0.045), transparent 42%),
-    #101116;
+    radial-gradient(circle at 15% 15%, rgba(121, 200, 238, 0.1), transparent 32%),
+    linear-gradient(145deg, #13151b 0%, #0d0e12 72%);
   box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.36);
 }
 
@@ -288,7 +288,7 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1rem;
   background: #08090c;
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.38);
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.45);
 }
 
 .heroScreen img {
@@ -313,21 +313,38 @@
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.42);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1120px) {
   .heroPanel {
-    grid-template-columns: minmax(0, 0.82fr) minmax(30rem, 1.18fr);
-    padding: clamp(2.25rem, 3.5vw, 3.25rem);
+    grid-template-columns: minmax(34rem, 1.14fr) minmax(25rem, 0.86fr);
+    gap: clamp(2.5rem, 4vw, 4.5rem);
+    padding: clamp(1.5rem, 2.2vw, 2rem);
+  }
+
+  .heroCopy {
+    padding-right: clamp(0.5rem, 1.5vw, 1.5rem);
   }
 
   .heroVisual {
+    order: -1;
     aspect-ratio: auto;
-    min-height: clamp(26rem, 35vw, 29rem);
+    min-height: clamp(27rem, 37vw, 31rem);
+  }
+
+  .heroScreen {
+    right: 3.5rem;
+    border-radius: 1.15rem;
   }
 
   .heroCover {
-    width: 9.75rem;
-    left: 1.25rem;
-    bottom: 1.25rem;
+    right: 0;
+    left: auto;
+    bottom: 1.5rem;
+    width: clamp(9.5rem, 12vw, 11.75rem);
+  }
+
+  .heroCover img {
+    border-radius: 1rem;
+    box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.56);
   }
 }
 
@@ -734,8 +751,13 @@
 .partnerSection {
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(245, 197, 24, 0.08), transparent 35%),
-    #090a0d;
+    radial-gradient(circle at 50% 0%, rgba(245, 197, 24, 0.11), transparent 32%),
+    linear-gradient(180deg, #0b0c10, #07080a);
+}
+
+.partnerContainer {
+  width: min(calc(100% - (var(--page-gutter) * 2)), 80rem);
+  max-width: none;
 }
 
 .partnerIntro {
@@ -744,8 +766,8 @@
 
 .partnerGrid {
   display: grid;
-  gap: 0.9rem;
-  margin-top: 1.75rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .offer {
@@ -753,16 +775,20 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 1rem;
-  border-color: var(--line-strong);
+  padding: 1.15rem;
+  border-color: rgba(255, 255, 255, 0.13);
+  border-radius: 1.35rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 40%),
-    #111216;
-  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.24);
+    linear-gradient(155deg, rgba(255, 255, 255, 0.055), transparent 42%),
+    #111217;
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.28);
 }
 
 .offerFeatured {
-  border-color: rgba(245, 197, 24, 0.35);
+  border-color: rgba(245, 197, 24, 0.52);
+  background:
+    linear-gradient(155deg, rgba(245, 197, 24, 0.08), transparent 42%),
+    #121216;
 }
 
 .offerMeta {
@@ -773,9 +799,9 @@
 }
 
 .offerRank {
-  color: #656a74;
+  color: #777d88;
   font-family: var(--font-unbounded), sans-serif;
-  font-size: 0.67rem;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
@@ -811,13 +837,15 @@
 
 .offerBrand {
   display: grid;
-  min-height: 12rem;
+  min-height: 11rem;
   place-items: center;
   margin-top: 0.8rem;
   padding: 1.25rem 1rem;
   border: 1px solid var(--line);
   border-radius: calc(var(--radius) - 0.25rem);
-  background: #090a0d;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(121, 200, 238, 0.07), transparent 55%),
+    #090a0d;
   text-align: center;
 }
 
@@ -967,6 +995,11 @@
 
   .partnerGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+
+  .offer {
+    min-height: 31rem;
   }
 }
 
