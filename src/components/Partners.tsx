@@ -5,26 +5,28 @@ import { useState } from "react";
 import { PARTNERS } from "@/lib/site";
 
 function Promo({ code }: { code: string }) {
-  const [done, setDone] = useState(false);
+  const [on, setOn] = useState(false);
 
   return (
-    <div className="promo" aria-label={`Промокод ${code}`}>
-      <span className="promo__label">Код</span>
-      <span className="promo__code">{code}</span>
+    <div className="promo">
+      <span className="promo__lbl">Код</span>
+      <span className="promo__val" aria-label={`Промокод ${code}`}>
+        {code}
+      </span>
       <button
         type="button"
-        className={`promo__btn ${done ? "is-done" : ""}`}
+        className={`promo__go ${on ? "is-on" : ""}`}
         onClick={async () => {
           try {
             await navigator.clipboard.writeText(code);
           } catch {
             /* ignore */
           }
-          setDone(true);
-          window.setTimeout(() => setDone(false), 1800);
+          setOn(true);
+          window.setTimeout(() => setOn(false), 1600);
         }}
       >
-        {done ? "Готово" : "Копировать"}
+        {on ? "Готово" : "Копировать"}
       </button>
     </div>
   );
@@ -38,36 +40,34 @@ export function Partners({
   compact?: boolean;
 }) {
   return (
-    <section id={id} className="band band--tint anchor">
-      <div
-        className="shell sec"
-        style={compact ? { paddingBlock: "2.1rem" } : undefined}
-      >
-        <p className="eyebrow">Топ казино</p>
-        <h2 className="title">
-          {compact ? "Готовы играть в Mine Drop 2?" : "Где играть в Mine Drop 2"}
+    <section id={id} className="band band--glass anchor" aria-labelledby={`${id}-title`}>
+      <div className="shell sec" style={compact ? { paddingBlock: "2rem" } : undefined}>
+        <p className="kicker">Где запустить</p>
+        <h2 id={`${id}-title`} className="h2">
+          {compact ? "Выберите площадку и играйте" : "Где играть в Mine Drop 2"}
         </h2>
-        <p className="lead">Три площадки с бонусами — сравни и запускай.</p>
+        <p className="lede">
+          Три проверенных казино с бонусом новичка. Сравните условия и запускайте
+          слот в один клик.
+        </p>
 
         <div className="cash">
           {PARTNERS.map((p, i) => (
-            <article key={`${id}-${p.id}`} className="card">
-              <div className="card__top">
-                <span className="card__rank">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+            <article key={`${id}-${p.id}`} className="offer">
+              <header className="offer__head">
+                <span className="offer__rank">{String(i + 1).padStart(2, "0")}</span>
                 <span
-                  className={`card__badge ${p.badge === "Топ" ? "card__badge--top" : ""}`}
+                  className={`offer__badge ${p.badge === "Топ" ? "offer__badge--hot" : ""}`}
                 >
                   {p.badge}
                 </span>
-                <span className="card__rating">
+                <span className="offer__rate">
                   <strong>{p.rating}</strong> ★
                 </span>
-              </div>
+              </header>
 
-              <div className="card__mid">
-                <div className="card__logo">
+              <div className="offer__body">
+                <div className="offer__logo">
                   <Image
                     src={p.logo}
                     alt={p.name}
@@ -77,28 +77,28 @@ export function Partners({
                     priority={p.id === "1win" && id === "play"}
                   />
                 </div>
-                <p className="card__label">Бонус новичкам</p>
-                <div className="card__bonus">
-                  <span className="card__bonus-v">{p.bonusValue}</span>
-                  <span className="card__bonus-x">{p.bonusExtra}</span>
-                </div>
+                <p className="offer__cap">Бонус новичкам</p>
+                <p className="offer__deal">
+                  <span className="offer__deal-main">{p.bonusValue}</span>
+                  <span className="offer__deal-extra">{p.bonusExtra}</span>
+                </p>
               </div>
 
-              <div className="card__foot">
+              <footer className="offer__foot">
                 {p.promoCode ? (
                   <Promo code={p.promoCode} />
                 ) : (
-                  <p className="promo__empty">Бонусы без промокода</p>
+                  <p className="promo__none">Бонусы без промокода</p>
                 )}
                 <a
                   href={p.href}
-                  className="card__cta"
+                  className="offer__cta"
                   rel="nofollow sponsored noopener"
                 >
                   Играть
                 </a>
-                <p className="card__legal">18+ · Играйте ответственно</p>
-              </div>
+                <p className="offer__note">18+ · Играйте ответственно</p>
+              </footer>
             </article>
           ))}
         </div>

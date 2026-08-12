@@ -1,32 +1,37 @@
 export function Rtp() {
   return (
-    <section id="rtp" className="band band--tint anchor">
+    <section id="rtp" className="band band--glass anchor" aria-labelledby="rtp-title">
       <div className="shell sec">
-        <p className="eyebrow">Математика</p>
-        <h2 className="title">RTP 96.70% и волатильность</h2>
-        <p className="lead">Что значат цифры на практике.</p>
-        <div className="grid-3" style={{ gridTemplateColumns: undefined }}>
-          <div className="panel">
+        <p className="kicker">Математика</p>
+        <h2 id="rtp-title" className="h2">
+          RTP, волатильность и риск
+        </h2>
+        <p className="lede">
+          Цифры полезны, если читать их как профиль риска — а не как обещание
+          вечера.
+        </p>
+        <div className="cards-3">
+          <article className="tile">
             <h3>RTP 96.70%</h3>
             <p>
-              Теория на длинной дистанции. На 100–500 спинах отклонение —
-              норма. Не ждите «возврата» за один вечер.
+              Теоретический возврат на длинной дистанции. На сотнях спинов
+              отклонение от теории — обычное дело, особенно в dig-burst слотах.
             </p>
-          </div>
-          <div className="panel">
-            <h3>High volatility</h3>
+          </article>
+          <article className="tile">
+            <h3>Высокая волатильность</h3>
             <p>
-              Сухие серии — часть игры. Ставка должна выдерживать 150–250
-              спинов без паники.
+              Сессии бывают «тихими». Ставка должна переживать длинные отрезки
+              без ярких событий — иначе банкролл закончится раньше механики.
             </p>
-          </div>
-          <div className="panel">
+          </article>
+          <article className="tile">
             <h3>Max ×50000</h3>
             <p>
-              Высокий потолок = редкий хвост. Bonus Buy — только с лимитом на
-              число покупок.
+              Высокий потолок означает редкий хвост распределения. Bonus Buy
+              усиливает дисперсию — держите отдельный лимит на покупки.
             </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>

@@ -1,22 +1,35 @@
 export function HowPlay() {
   return (
-    <section id="how" className="band band--tint anchor">
+    <section id="how" className="band band--glass anchor" aria-labelledby="how-title">
       <div className="shell sec">
-        <p className="eyebrow">Как играть</p>
-        <h2 className="title">Как играть в Mine Drop 2</h2>
-        <p className="lead">
-          От кнопки «Играть» до dig-burst раунда — четыре коротких шага.
+        <p className="kicker">Геймплей</p>
+        <h2 id="how-title" className="h2">
+          Как проходит раунд
+        </h2>
+        <p className="lede">
+          Короткий маршрут от кнопки «Играть» до dig-burst цикла — без воды.
         </p>
-        <ol className="grid-4">
+        <ol className="steps">
           {[
-            ["01", "Выберите казино", "Откройте 1win, JetTon или Stake и создайте аккаунт."],
-            ["02", "Найдите слот", "Ищите Mine Drop 2 / Minedrop 2 от Paperclip — не Mine Slot 2."],
-            ["03", "Ставка и дроп", "Фиксируете ставку. Над шахтой идёт дроп 5×3."],
-            ["04", "Бонусы", "Blast Ore, Ender Eye и опциональный Bonus Buy."],
-          ].map(([n, t, d]) => (
-            <li key={n} className="panel">
-              <div className="panel__n">{n}</div>
-              <h3 style={{ marginTop: 8 }}>{t}</h3>
+            [
+              "Выберите площадку",
+              "Откройте 1win, JetTon или Stake, создайте аккаунт и перейдите в каталог слотов.",
+            ],
+            [
+              "Найдите нужный тайтл",
+              "Ищите Mine Drop 2 / Minedrop 2 от Paperclip Gaming. Не путайте с Mine Slot 2.",
+            ],
+            [
+              "Поставьте ставку",
+              "Над шахтой появляется дроп 5×3 — от него зависит, как пойдёт прокоп раунда.",
+            ],
+            [
+              "Ловите события",
+              "Blast Ore и Ender Eye дают импульс. Bonus Buy — опция, не обязанность.",
+            ],
+          ].map(([t, d]) => (
+            <li key={t} className="tile step">
+              <h3>{t}</h3>
               <p>{d}</p>
             </li>
           ))}

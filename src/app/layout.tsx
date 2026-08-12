@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#0a0a0a",
   width: "device-width",
   initialScale: 1,
 };
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ru"
       className={`${manrope.variable} ${unbounded.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg font-sans text-fg">
+      <body className="min-h-full font-sans text-fg">
         <JsonLd data={schemas} />
         {children}
       </body>

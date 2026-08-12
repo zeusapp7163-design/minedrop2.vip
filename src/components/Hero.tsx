@@ -2,47 +2,48 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="hero">
-      <div className="shell hero__stage">
-        <div className="hero__art">
+    <header className="hero">
+      <div className="hero__glow" aria-hidden />
+      <div className="shell hero__grid">
+        <figure className="hero__cover">
           <Image
             src="/media/cover.webp"
-            alt="Mine Drop 2"
-            width={180}
-            height={240}
+            alt="Обложка слота Mine Drop 2 от Paperclip Gaming"
+            width={184}
+            height={245}
             priority
-            sizes="(max-width: 899px) 112px, 180px"
+            sizes="(max-width: 899px) 116px, 184px"
           />
-        </div>
+        </figure>
 
         <div className="hero__copy">
-          <p className="eyebrow">Официальный сайт · Paperclip Gaming</p>
+          <p className="kicker">Официальный сайт · Paperclip Gaming</p>
           <h1 className="hero__h1">Mine Drop 2</h1>
-          <p className="hero__lead">
-            Играть онлайн и в демо. Dig-burst слот на Stake Engine — RTP 96.70%,
-            max ×50000.
+          <p className="hero__text">
+            Сиквел шахтёрского dig-burst слота на Stake Engine. Запуск онлайн
+            или демо — RTP 96.70%, потолок ×50000.
           </p>
-          <div className="actions">
-            <a href="#play" className="btn btn--primary">
+          <div className="row-btns">
+            <a href="#play" className="btn btn-gold">
               Играть
             </a>
-            <a href="#demo" className="btn btn--ghost">
+            <a href="#demo" className="btn btn-line">
               Демо
             </a>
           </div>
-          <div className="hero__meta">
-            <span className="chip">
-              RTP <strong>96.70%</strong>
-            </span>
-            <span className="chip">
-              Max <strong>×50000</strong>
-            </span>
-            <span className="chip">
-              Вола <strong>High</strong>
-            </span>
-          </div>
+          <ul className="hero__stats" aria-label="Ключевые параметры">
+            <li className="pill">
+              RTP <b>96.70%</b>
+            </li>
+            <li className="pill">
+              Max <b>×50000</b>
+            </li>
+            <li className="pill">
+              Вола <b>High</b>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
+    </header>
   );
 }

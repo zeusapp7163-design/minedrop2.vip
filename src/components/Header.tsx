@@ -11,14 +11,14 @@ const NAV = [
 ] as const;
 
 export function Header() {
-  const [solid, setSolid] = useState(false);
+  const [on, setOn] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 6);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const fn = () => setOn(window.scrollY > 8);
+    fn();
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
 
   useEffect(() => {
@@ -29,12 +29,12 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className={`topbar ${solid || open ? "is-solid" : ""}`}>
-      <div className="topbar__row">
-        <a href="/" className="brand">
-          minedrop2<span>.vip</span>
+    <header className={`top ${on || open ? "on" : ""}`}>
+      <div className="top__in">
+        <a href="/" className="logo">
+          minedrop2<i>.vip</i>
         </a>
-        <nav className="nav" aria-label="Навигация">
+        <nav className="nav" aria-label="Разделы сайта">
           {NAV.map((item) => (
             <a key={item.href} href={item.href}>
               {item.label}
@@ -42,13 +42,14 @@ export function Header() {
           ))}
         </nav>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <a href="#play" className="btn btn--primary btn--sm">
+          <a href="#play" className="btn btn-gold btn-sm">
             Играть
           </a>
           <button
             type="button"
-            className="burger"
+            className="menu"
             aria-expanded={open}
+            aria-controls="site-menu"
             aria-label={open ? "Закрыть меню" : "Открыть меню"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -57,7 +58,7 @@ export function Header() {
         </div>
       </div>
       {open ? (
-        <nav className="mobile-nav">
+        <nav id="site-menu" className="drawer" aria-label="Мобильное меню">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
               {item.label}
