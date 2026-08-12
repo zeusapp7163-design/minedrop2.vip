@@ -11,11 +11,11 @@ const NAV = [
 ] as const;
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setSolid(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -29,38 +29,26 @@ export function Header() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-30 transition-colors ${
-        scrolled || open
-          ? "border-b border-line bg-black/95 backdrop-blur-md"
-          : "bg-black/35"
-      }`}
-    >
-      <div className="page-shell flex h-[var(--header-h)] items-center justify-between gap-3">
-        <a
-          href="/"
-          className="shrink-0 font-display text-sm font-semibold tracking-wide"
-        >
-          minedrop2<span className="text-accent">.vip</span>
+    <header className={`topbar ${solid || open ? "is-solid" : ""}`}>
+      <div className="topbar__row">
+        <a href="/" className="brand">
+          minedrop2<span>.vip</span>
         </a>
-
-        <nav className="hidden items-center gap-5 text-sm text-fg-muted lg:flex">
+        <nav className="nav" aria-label="Навигация">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="hover:text-fg">
+            <a key={item.href} href={item.href}>
               {item.label}
             </a>
           ))}
         </nav>
-
-        <div className="flex items-center gap-2">
-          <a href="#play" className="btn-yellow !min-h-10 !px-3.5 !text-sm">
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <a href="#play" className="btn btn--primary btn--sm">
             Играть
           </a>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-fg lg:hidden"
+            className="burger"
             aria-expanded={open}
-            aria-controls="mobile-nav"
             aria-label={open ? "Закрыть меню" : "Открыть меню"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -68,25 +56,17 @@ export function Header() {
           </button>
         </div>
       </div>
-
       {open ? (
-        <nav
-          id="mobile-nav"
-          className="border-t border-line bg-black px-4 py-3 lg:hidden"
-        >
-          <ul className="mx-auto flex max-w-[var(--page-max)] flex-col gap-1">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="block rounded-lg px-3 py-3 text-sm text-fg-muted hover:bg-white/5 hover:text-fg"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <nav className="mobile-nav" aria-label="Мобильное меню">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
       ) : null}
     </header>

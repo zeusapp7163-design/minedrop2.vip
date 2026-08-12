@@ -2,45 +2,31 @@ import { GAME } from "@/lib/site";
 
 export function About() {
   return (
-    <section id="about" className="section-rule scroll-target">
-      <div className="page-shell section-pad">
-        <p className="section-eyebrow">Об игре</p>
-        <h2 className="section-title">Официальный сайт Mine Drop 2</h2>
-        <div className="about-layout">
-          <div className="prose-clean text-[15px] sm:text-base">
+    <section id="about" className="band anchor">
+      <div className="shell sec">
+        <p className="eyebrow">Об игре</p>
+        <h2 className="title">Официальный сайт Mine Drop 2</h2>
+        <div className="grid-2">
+          <div className="prose">
             <p>
-              <strong>Mine Drop 2</strong> (в поиске также{" "}
-              <strong>Minedrop 2</strong>, <strong>майне дроп 2</strong>) —
-              сиквел шахтёрского слота от <strong>{GAME.provider}</strong> на{" "}
-              <strong>{GAME.engine}</strong>. Этот сайт — точка входа:{" "}
-              <strong>играть онлайн</strong>, открыть демо и быстро сверить
-              параметры без огромного каталога.
+              <strong>Mine Drop 2</strong> (Minedrop 2 / майне дроп 2) — сиквел
+              от <strong>{GAME.provider}</strong> на{" "}
+              <strong>{GAME.engine}</strong>. Здесь можно{" "}
+              <strong>играть онлайн</strong>, открыть демо и сверить параметры
+              без каталога на сотни слотов.
             </p>
             <p>
-              Механика — <strong>dig-burst / mining</strong>:{" "}
-              <strong>{GAME.grid}</strong>, <strong>Blast Ore</strong>,{" "}
-              <strong>Ender Eye bonuses</strong> и <strong>Bonus Buy</strong>.
-              Релиз — {GAME.release}. Часто встречается как «Only on Stake».
+              Механика dig-burst: {GAME.grid}, Blast Ore, Ender Eye bonuses и
+              Bonus Buy. Релиз — {GAME.release}. Часто «Only on Stake».
             </p>
             <p>
-              Если искали «mine drop 2 играть», «mine drop 2 слот» или
-              «официальный сайт» — вы по адресу. Ниже: как идёт раунд, чем
-              сиквел отличается от Mine Drop и почему это не{" "}
-              <strong>Mine Slot 2</strong> (InOut).
-            </p>
-            <p>
-              <a
-                href="#play"
-                className="font-semibold text-accent hover:text-accent-hot"
-              >
-                → Играть в Mine Drop 2
-              </a>
+              Не путайте с <strong>Mine Slot 2</strong> (InOut) — другой
+              провайдер и другая игра.{" "}
+              <a href="#play">→ Играть в Mine Drop 2</a>
             </p>
           </div>
-
-          <div className="data-table-wrap about-table">
-            <table className="data-table data-table--compact">
-              <caption className="sr-only">Характеристики Mine Drop 2</caption>
+          <div className="table-wrap">
+            <table className="table">
               <tbody>
                 {[
                   ["Название", "Mine Drop 2 / Minedrop 2"],

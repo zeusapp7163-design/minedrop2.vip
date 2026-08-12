@@ -3,36 +3,44 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section className="hero">
-      <div className="hero__glow" aria-hidden />
-      <div className="page-shell hero__inner">
-        <div className="hero__media">
-          <Image
-            src="/media/cover.webp"
-            alt="Mine Drop 2 — обложка Paperclip Gaming"
-            width={200}
-            height={267}
-            priority
-            sizes="(max-width: 640px) 112px, 160px"
-            className="hero__cover-img"
-          />
-        </div>
-
+      <div className="shell hero__stage">
         <div className="hero__copy">
-          <p className="section-eyebrow">Официальный сайт · Paperclip Gaming</p>
-          <h1 className="hero__title">Mine Drop 2</h1>
+          <p className="eyebrow">Официальный сайт · Paperclip Gaming</p>
+          <h1 className="hero__h1">Mine Drop 2</h1>
           <p className="hero__lead">
             Играть онлайн и в демо. Dig-burst слот на Stake Engine — RTP 96.70%,
-            max ×50000, Blast Ore и Bonus Buy.
+            max ×50000.
           </p>
-          <div className="btn-row hero__actions">
-            <a href="#play" className="btn-yellow">
+          <div className="actions">
+            <a href="#play" className="btn btn--primary">
               Играть
             </a>
-            <a href="#demo" className="btn-ghost">
+            <a href="#demo" className="btn btn--ghost">
               Демо
             </a>
           </div>
-          <p className="hero__meta">18+ · Stake Engine · Minedrop 2</p>
+          <div className="hero__meta">
+            <span className="chip">
+              RTP <strong>96.70%</strong>
+            </span>
+            <span className="chip">
+              Max <strong>×50000</strong>
+            </span>
+            <span className="chip">
+              Вола <strong>High</strong>
+            </span>
+          </div>
+        </div>
+
+        <div className="hero__art">
+          <Image
+            src="/media/cover.webp"
+            alt="Mine Drop 2"
+            width={220}
+            height={293}
+            priority
+            sizes="(max-width: 899px) 96px, 220px"
+          />
         </div>
       </div>
     </section>

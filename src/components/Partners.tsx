@@ -6,13 +6,10 @@ import { PARTNERS } from "@/lib/site";
 
 function PromoCopy({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
-
   return (
-    <div className="cash-card__promo">
-      <div className="min-w-0">
-        <span className="text-[10px] uppercase tracking-wider text-fg-muted">
-          Код{" "}
-        </span>
+    <div className="card__promo">
+      <div>
+        <span style={{ color: "var(--muted)", fontSize: 10 }}>Код </span>
         <code>{code}</code>
       </div>
       <button
@@ -21,7 +18,7 @@ function PromoCopy({ code }: { code: string }) {
           try {
             await navigator.clipboard.writeText(code);
             setCopied(true);
-            window.setTimeout(() => setCopied(false), 1500);
+            window.setTimeout(() => setCopied(false), 1400);
           } catch {
             /* ignore */
           }
@@ -41,71 +38,63 @@ export function Partners({
   compact?: boolean;
 }) {
   return (
-    <section id={id} className="section-rule scroll-target bg-bg-elevated">
-      <div className={`page-shell ${compact ? "py-10 sm:py-12" : "section-pad"}`}>
-        <p className="section-eyebrow">Топ казино</p>
-        <h2 className="section-title">
+    <section id={id} className="band band--soft anchor">
+      <div className={`shell sec ${compact ? "" : ""}`} style={compact ? { paddingBlock: "2.25rem" } : undefined}>
+        <p className="eyebrow">Топ казино</p>
+        <h2 className="title">
           {compact ? "Готовы играть в Mine Drop 2?" : "Где играть в Mine Drop 2"}
         </h2>
-        <p className="section-lead">
-          Три площадки с бонусами — сравни и запускай слот онлайн.
+        <p className="lead">
+          Три площадки с бонусами — сравни и запускай слот.
         </p>
 
-        <div className="cash-grid mt-7 sm:mt-8">
-          {PARTNERS.map((partner, index) => (
-            <article key={`${id}-${partner.id}`} className="cash-card">
-              <div className="cash-card__meta">
-                <span className="cash-card__rank">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+        <div className="cash">
+          {PARTNERS.map((p, i) => (
+            <article key={`${id}-${p.id}`} className="card">
+              <div className="card__top">
+                <span className="card__rank">{String(i + 1).padStart(2, "0")}</span>
                 <span
-                  className={`cash-card__badge ${partner.badge === "Топ" ? "cash-card__badge--top" : ""}`}
+                  className={`card__badge ${p.badge === "Топ" ? "card__badge--top" : ""}`}
                 >
-                  {partner.badge}
+                  {p.badge}
                 </span>
-                <span className="cash-card__rating">
-                  <strong>{partner.rating}</strong>
-                  <span aria-hidden>★</span>
+                <span className="card__rating">
+                  <strong>{p.rating}</strong> ★
                 </span>
               </div>
 
-              <div className="cash-card__brand">
-                <div className="cash-card__logo">
+              <div className="card__mid">
+                <div className="card__logo">
                   <Image
-                    src={partner.logo}
-                    alt={partner.name}
+                    src={p.logo}
+                    alt={p.name}
                     fill
                     sizes="140px"
                     className="object-contain"
-                    priority={partner.id === "1win" && id === "play"}
+                    priority={p.id === "1win" && id === "play"}
                   />
                 </div>
-                <p className="cash-card__label">Бонус новичкам</p>
-                <div className="cash-card__bonus">
-                  <span className="cash-card__bonus-value">
-                    {partner.bonusValue}
-                  </span>
-                  <span className="cash-card__bonus-extra">
-                    {partner.bonusExtra}
-                  </span>
+                <p className="card__label">Бонус новичкам</p>
+                <div className="card__bonus">
+                  <span className="card__bonus-v">{p.bonusValue}</span>
+                  <span className="card__bonus-x">{p.bonusExtra}</span>
                 </div>
               </div>
 
-              <div className="cash-card__foot">
-                {partner.promoCode ? (
-                  <PromoCopy code={partner.promoCode} />
+              <div className="card__foot">
+                {p.promoCode ? (
+                  <PromoCopy code={p.promoCode} />
                 ) : (
-                  <p className="cash-card__no-promo">Бонусы без промокода</p>
+                  <p className="card__nopromo">Бонусы без промокода</p>
                 )}
-
                 <a
-                  href={partner.href}
-                  className="cash-card__cta"
+                  href={p.href}
+                  className="card__cta"
                   rel="nofollow sponsored noopener"
                 >
                   Играть
                 </a>
-                <p className="cash-card__legal">18+ · Играйте ответственно</p>
+                <p className="card__legal">18+ · Играйте ответственно</p>
               </div>
             </article>
           ))}

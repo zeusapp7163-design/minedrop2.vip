@@ -2,32 +2,25 @@ import { FAQ } from "@/lib/site";
 
 export function Faq() {
   return (
-    <section id="faq" className="section-rule scroll-target">
-      <div className="page-shell section-pad" style={{ maxWidth: "48rem" }}>
-        <p className="section-eyebrow">FAQ</p>
-        <h2 className="section-title">Частые вопросы про Mine Drop 2</h2>
-        <p className="section-lead">
-          Где играть онлайн, демо, RTP и чем Mine Drop 2 не равен Mine Slot 2.
-        </p>
-        <div className="mt-8 divide-y divide-line border-y border-line">
-          {FAQ.map((item) => (
-            <details key={item.question} className="faq-item py-1">
-              <summary className="flex cursor-pointer items-start justify-between gap-4 py-4">
-                <h3 className="min-w-0 text-[15px] font-semibold leading-snug sm:text-lg">
-                  {item.question}
-                </h3>
-                <span
-                  className="faq-chevron mt-1 shrink-0 text-fg-muted transition-transform"
-                  aria-hidden
-                >
-                  ▾
-                </span>
-              </summary>
-              <p className="pb-5 text-[15px] leading-relaxed text-fg-muted">
-                {item.answer}
-              </p>
-            </details>
-          ))}
+    <section id="faq" className="band anchor">
+      <div className="shell sec">
+        <div style={{ maxWidth: 720 }}>
+          <p className="eyebrow">FAQ</p>
+          <h2 className="title">Частые вопросы</h2>
+          <p className="lead">Где играть, демо, RTP, Mine Slot 2.</p>
+          <div className="faq">
+            {FAQ.map((item) => (
+              <details key={item.question}>
+                <summary>
+                  <span>{item.question}</span>
+                  <span className="faq__chev" aria-hidden>
+                    ▾
+                  </span>
+                </summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>
