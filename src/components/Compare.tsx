@@ -54,7 +54,7 @@ export function Compare() {
 
         <p className="mt-6 text-[15px] text-fg-muted">
           <a href="#play" className="font-semibold text-accent hover:text-accent-hot">
-            → Играть в Mine Drop 2 онлайн
+            → Играть в Mine Drop 2
           </a>
         </p>
       </div>

@@ -18,14 +18,14 @@ export function Demo() {
             <h2 className="section-title">Demo Play — как выглядит Mine Drop 2</h2>
             <p className="section-lead">
               Реальные кадры: дроп, сундуки, Bonus Buy. Демо — без регистрации;
-              на деньги — через казино на странице.
+              играть — через казино на странице.
             </p>
           </div>
           <a
             href="#play"
             className="btn-yellow shrink-0 self-stretch sm:self-auto"
           >
-            Играть на деньги
+            Играть
           </a>
         </div>
 

@@ -13,7 +13,7 @@ export function Footer() {
             </p>
           </div>
           <a href="#play" className="btn-yellow self-stretch sm:self-auto">
-            Играть онлайн
+            Играть
           </a>
         </div>
         <p className="mt-8 border-t border-line pt-6 text-xs leading-relaxed text-fg-muted">

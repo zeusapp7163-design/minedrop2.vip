@@ -41,25 +41,17 @@ export function Partners({
   compact?: boolean;
 }) {
   return (
-    <section
-      id={id}
-      className="section-rule scroll-target bg-bg-elevated"
-    >
-      <div className={`page-shell ${compact ? "py-12" : "section-pad"}`}>
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-          Топ казино
-        </p>
-        <h2 className="mt-2 font-display text-[1.65rem] font-semibold tracking-tight sm:text-3xl">
-          {compact
-            ? "Готовы играть в Mine Drop 2?"
-            : "Где сыграть в Mine Drop 2 на деньги"}
+    <section id={id} className="section-rule scroll-target bg-bg-elevated">
+      <div className={`page-shell ${compact ? "py-10 sm:py-12" : "section-pad"}`}>
+        <p className="section-eyebrow">Топ казино</p>
+        <h2 className="section-title">
+          {compact ? "Готовы играть в Mine Drop 2?" : "Где играть в Mine Drop 2"}
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-fg-muted sm:text-base">
-          Отобрали 3 лицензированных казино с бонусами — сравни и запускай слот
-          онлайн.
+        <p className="section-lead">
+          Три площадки с бонусами — сравни и запускай слот онлайн.
         </p>
 
-        <div className="cash-grid mt-8">
+        <div className="cash-grid mt-7 sm:mt-8">
           {PARTNERS.map((partner, index) => (
             <article key={`${id}-${partner.id}`} className="cash-card">
               <div className="cash-card__meta">
@@ -83,7 +75,7 @@ export function Partners({
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    sizes="150px"
+                    sizes="140px"
                     className="object-contain"
                     priority={partner.id === "1win" && id === "play"}
                   />
@@ -111,7 +103,7 @@ export function Partners({
                   className="cash-card__cta"
                   rel="nofollow sponsored noopener"
                 >
-                  {partner.cta}
+                  Играть
                 </a>
                 <p className="cash-card__legal">18+ · Играйте ответственно</p>
               </div>

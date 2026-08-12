@@ -44,7 +44,7 @@ export function HowPlay() {
           High volatility + max ×50000 = редкие пики. Начните с небольшой ставки
           или демо.{" "}
           <a href="#play" className="font-semibold text-accent hover:text-accent-hot">
-            Играть сейчас →
+            Играть в Mine Drop 2 →
           </a>
         </p>
       </div>
