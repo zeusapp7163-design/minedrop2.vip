@@ -81,7 +81,7 @@ export function AgeGateLink({
     rememberAgeConfirmed();
     setOpen(false);
     setDenied(false);
-    window.location.assign(pendingHref.current);
+    window.open(pendingHref.current, "_blank", "noopener,noreferrer");
   }, []);
 
   function onClick(event: MouseEvent<HTMLAnchorElement>) {
@@ -104,7 +104,8 @@ export function AgeGateLink({
       <a
         href={href}
         className={className}
-        rel="nofollow sponsored noopener"
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
         onClick={onClick}
       >
         {children}
