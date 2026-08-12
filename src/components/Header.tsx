@@ -11,15 +11,7 @@ const NAV = [
 ] as const;
 
 export function Header() {
-  const [on, setOn] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const fn = () => setOn(window.scrollY > 8);
-    fn();
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -29,7 +21,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className={`top ${on || open ? "on" : ""}`}>
+    <header className="top">
       <div className="top__in">
         <a href="/" className="logo">
           minedrop2<i>.vip</i>

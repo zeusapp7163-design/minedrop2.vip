@@ -1,6 +1,6 @@
 export function Rtp() {
   return (
-    <section id="rtp" className="band band--glass anchor" aria-labelledby="rtp-title">
+    <section id="rtp" className="band anchor" aria-labelledby="rtp-title">
       <div className="shell sec">
         <p className="kicker">Математика</p>
         <h2 id="rtp-title" className="h2">

@@ -17,7 +17,7 @@ const SHOTS = [
 
 export function Demo() {
   return (
-    <section id="demo" className="band band--glass anchor" aria-labelledby="demo-title">
+    <section id="demo" className="band anchor" aria-labelledby="demo-title">
       <div className="shell sec">
         <div
           style={{

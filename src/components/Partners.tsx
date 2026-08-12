@@ -40,15 +40,15 @@ export function Partners({
   compact?: boolean;
 }) {
   return (
-    <section id={id} className="band band--glass anchor" aria-labelledby={`${id}-title`}>
-      <div className="shell sec" style={compact ? { paddingBlock: "2rem" } : undefined}>
+    <section id={id} className="band anchor" aria-labelledby={`${id}-title`}>
+      <div className="shell sec" style={compact ? { paddingBlock: "32px" } : undefined}>
         <p className="kicker">Где запустить</p>
         <h2 id={`${id}-title`} className="h2">
           {compact ? "Выберите площадку и играйте" : "Где играть в Mine Drop 2"}
         </h2>
         <p className="lede">
-          Три проверенных казино с бонусом новичка. Сравните условия и запускайте
-          слот в один клик.
+          Три казино с бонусом новичка. Одинаковые карточки — сравните и
+          запускайте.
         </p>
 
         <div className="cash">
@@ -72,7 +72,7 @@ export function Partners({
                     src={p.logo}
                     alt={p.name}
                     fill
-                    sizes="148px"
+                    sizes="140px"
                     className="object-contain"
                     priority={p.id === "1win" && id === "play"}
                   />

@@ -1,6 +1,6 @@
 export function HowPlay() {
   return (
-    <section id="how" className="band band--glass anchor" aria-labelledby="how-title">
+    <section id="how" className="band anchor" aria-labelledby="how-title">
       <div className="shell sec">
         <p className="kicker">Геймплей</p>
         <h2 id="how-title" className="h2">

@@ -3,16 +3,15 @@ import Image from "next/image";
 export function Hero() {
   return (
     <header className="hero">
-      <div className="hero__glow" aria-hidden />
       <div className="shell hero__grid">
         <figure className="hero__cover">
           <Image
             src="/media/cover.webp"
             alt="Обложка слота Mine Drop 2 от Paperclip Gaming"
-            width={184}
-            height={245}
+            width={180}
+            height={240}
             priority
-            sizes="(max-width: 899px) 116px, 184px"
+            sizes="(max-width: 639px) 88px, (max-width: 899px) 140px, 180px"
           />
         </figure>
 
@@ -20,8 +19,8 @@ export function Hero() {
           <p className="kicker">Официальный сайт · Paperclip Gaming</p>
           <h1 className="hero__h1">Mine Drop 2</h1>
           <p className="hero__text">
-            Сиквел шахтёрского dig-burst слота на Stake Engine. Запуск онлайн
-            или демо — RTP 96.70%, потолок ×50000.
+            Dig-burst слот на Stake Engine. Играйте онлайн или в демо — RTP
+            96.70%, max ×50000.
           </p>
           <div className="row-btns">
             <a href="#play" className="btn btn-gold">
