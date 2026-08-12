@@ -184,14 +184,15 @@
 
 .heroMain {
   display: grid;
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  align-items: center;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
   min-width: 0;
 }
 
 .heroPoster {
   position: relative;
-  width: 100%;
+  width: 104px;
   aspect-ratio: 360 / 472;
   margin: 0;
   overflow: hidden;
@@ -209,7 +210,7 @@
   position: relative;
   z-index: 2;
   min-width: 0;
-  padding: 0.35rem;
+  padding: 0;
 }
 
 .heroBadge {
@@ -217,14 +218,14 @@
   align-items: center;
   gap: 0.55rem;
   margin: 0;
-  padding: 0.42rem 0.68rem;
+  padding: 0.18rem 0.45rem;
   border: 1px solid rgba(121, 200, 238, 0.25);
   border-radius: 999px;
   background: rgba(121, 200, 238, 0.07);
   color: #c9edff;
-  font-size: 0.68rem;
+  font-size: 0.53rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   max-width: 100%;
 }
@@ -239,21 +240,25 @@
 }
 
 .heroTitle {
-  margin: 1rem 0 0;
+  margin: 0.625rem 0 0;
   font-family: var(--font-manrope), sans-serif;
-  font-size: clamp(2.75rem, 6vw, 4.6rem);
+  font-size: 1.35rem;
   font-weight: 900;
-  letter-spacing: -0.07em;
-  line-height: 0.94;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
   text-wrap: balance;
 }
 
 .heroLead {
-  margin: 1.2rem 0 0;
+  display: -webkit-box;
+  margin: 0.625rem 0 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
   max-width: 34rem;
   color: #bdc2ce;
-  font-size: clamp(1rem, 2vw, 1.14rem);
-  line-height: 1.7;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .heroActions {
@@ -310,11 +315,33 @@
 
 @media (min-width: 640px) {
   .heroMain {
-    grid-template-columns: minmax(12rem, 15rem) minmax(0, 1fr);
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 1.5rem;
   }
 
   .heroPoster {
+    width: 168px;
     align-self: stretch;
+  }
+
+  .heroBadge {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  .heroTitle {
+    margin-top: 1rem;
+    font-size: 2.25rem;
+    line-height: 1.08;
+  }
+
+  .heroLead {
+    display: block;
+    margin-top: 0.875rem;
+    overflow: visible;
+    font-size: 0.98rem;
+    line-height: 1.625;
   }
 }
 
@@ -324,7 +351,16 @@
   }
 
   .heroMain {
-    grid-template-columns: minmax(14rem, 17rem) minmax(0, 1fr);
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+
+  .heroPoster {
+    width: 200px;
+  }
+
+  .heroTitle {
+    font-size: 2.55rem;
   }
 
   .heroMeta {

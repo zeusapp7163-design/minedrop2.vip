@@ -29,7 +29,7 @@ export function Hero({ config }: { config: LandingConfig }) {
 
             <div className={styles.heroCopy}>
               <p className={styles.heroBadge}>
-                {game.provider} · {game.engine}
+                {game.provider}
               </p>
               <h1 id="page-title" className={styles.heroTitle}>
                 {game.name}
