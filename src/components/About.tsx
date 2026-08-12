@@ -1,17 +1,26 @@
 import Image from "next/image";
-import { Container, DataTable, Section, SectionHeader } from "@/components/ui";
+import { Container, Section, SectionHeader } from "@/components/ui";
 import { landingConfig } from "@/content/minedrop2.config";
 import styles from "./Landing.module.css";
 
 export function About() {
   const { game } = landingConfig;
-  const rows = [
-    ["Название", `${game.name} / ${game.alternateNames[0]}`],
-    ["Провайдер", game.provider],
-    ["Движок", game.engine],
-    ["Релиз", game.release],
-    ["Механика", game.mechanics],
-    ["Сетка", game.grid],
+  const highlights = [
+    {
+      label: "01",
+      title: "Дроп 5×3",
+      text: "Комбинации формируются над шахтой и определяют, продолжится ли прокоп.",
+    },
+    {
+      label: "02",
+      title: "Живой раунд",
+      text: "Blast Ore и Ender Eye меняют поле уже после первого результата.",
+    },
+    {
+      label: "03",
+      title: "Высокий риск",
+      text: `Волатильность высокая, RTP ${game.rtp}, максимальный потенциал ${game.maxWin}.`,
+    },
   ];
 
   return (
@@ -25,53 +34,51 @@ export function About() {
         />
 
         <div className={styles.aboutGrid}>
-          <div className={styles.prose}>
-            <p>
-              <strong>{game.name}</strong> — продолжение шахтёрского слота от{" "}
-              <strong>{game.provider}</strong>. Игра работает на{" "}
-              <strong>{game.engine}</strong> и соединяет поле 5×3 с
-              последовательным прокопом блоков.
-            </p>
-            <p>
-              Центральная логика — <strong>dig-burst</strong>. Выигрышные
-              события двигают шахту, Blast Ore расчищает область, а Ender Eye
-              добавляет отдельные бонусные сценарии. Bonus Buy доступен как
-              ускоренный, но более рискованный вход.
-            </p>
-            <p>
-              Здесь собраны параметры, кадры интерфейса и площадки для запуска —
-              без смешивания с <strong>Mine Slot 2</strong> от InOut.{" "}
-              <a href="#mechanics">Разобрать механику ниже</a>.
-            </p>
-          </div>
+          <figure className={styles.aboutFigure}>
+            <div className={styles.aboutImage}>
+              <Image
+                src="/media/ui-1.jpg"
+                alt="Базовый интерфейс Mine Drop 2 с шахтой и сундуками"
+                fill
+                sizes="(max-width: 899px) 100vw, 58vw"
+              />
+            </div>
+            <figcaption>
+              Базовый раунд: поле 5×3, шахта блоков и пять сундуков прогресса.
+            </figcaption>
+          </figure>
 
-          <div className={styles.aboutMedia}>
-            <figure className={styles.editorialFigure}>
-              <div className={styles.editorialImage}>
-                <Image
-                  src="/media/ui-1.jpg"
-                  alt="Базовый интерфейс Mine Drop 2 с шахтой и сундуками"
-                  fill
-                  sizes="(max-width: 899px) 100vw, 52vw"
-                />
+          <article className={styles.aboutSummary}>
+            <p className={styles.aboutLabel}>Суть игры</p>
+            <h3>Один дроп запускает цепочку событий</h3>
+            <div className={styles.prose}>
+              <p>
+                <strong>{game.name}</strong> — продолжение шахтёрского слота от{" "}
+                <strong>{game.provider}</strong> на движке{" "}
+                <strong>{game.engine}</strong>.
+              </p>
+              <p>
+                Здесь выигрышная комбинация не завершает спин: она двигает
+                шахту глубже, открывает новые блоки и даёт пространство для
+                Blast Ore и Ender Eye.
+              </p>
+            </div>
+            <a href="#mechanics" className={styles.aboutLink}>
+              Как устроен раунд →
+            </a>
+          </article>
+        </div>
+
+        <div className={styles.aboutHighlights}>
+          {highlights.map((item) => (
+            <article key={item.label} className={styles.aboutHighlight}>
+              <span>{item.label}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </div>
-              <figcaption className={styles.caption}>
-                Поле 5×3 расположено над шахтой: результат дропа определяет
-                дальнейший прокоп.
-              </figcaption>
-            </figure>
-
-            <DataTable caption="Основные сведения о Mine Drop 2">
-              <tbody>
-                {rows.map(([label, value]) => (
-                  <tr key={label}>
-                    <th scope="row">{label}</th>
-                    <td>{value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </DataTable>
-          </div>
+            </article>
+          ))}
         </div>
       </Container>
     </Section>
