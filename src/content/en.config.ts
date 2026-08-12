@@ -268,7 +268,7 @@ export const enConfig = {
       copied: "Copied",
       copyAria: "Copy promo code",
       noPromo: "Offers without a promo code",
-      play: "Play",
+      play: "Play at",
       legal: "18+ · Play responsibly",
     },
     faq: {

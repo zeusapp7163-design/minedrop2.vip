@@ -10,7 +10,6 @@ import { HowPlay } from "@/components/HowPlay";
 import { JsonLd, buildPageSchemas } from "@/components/JsonLd";
 import { Partners } from "@/components/Partners";
 import { Rtp } from "@/components/Rtp";
-import { Specs } from "@/components/Specs";
 import type { LandingConfig, Locale } from "@/content";
 
 export function LandingPage({
@@ -26,7 +25,6 @@ export function LandingPage({
       <Header config={config} locale={locale} />
       <main id="content">
         <Hero config={config} />
-        <Specs config={config} />
         <About config={config} />
         <HowPlay config={config} />
         <Features config={config} />

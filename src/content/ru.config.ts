@@ -269,7 +269,7 @@ export const ruConfig = {
       copied: "Готово",
       copyAria: "Скопировать промокод",
       noPromo: "Бонусы без промокода",
-      play: "Играть",
+      play: "Играть в",
       legal: "18+ · Играйте ответственно",
     },
     faq: {

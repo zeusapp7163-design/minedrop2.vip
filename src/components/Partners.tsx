@@ -28,6 +28,7 @@ export function Partners({ config }: { config: LandingConfig }) {
               key={partner.id}
               className={`${styles.offer} ${index === 0 ? styles.offerFeatured : ""}`}
             >
+              <span className={styles.offerShine} aria-hidden="true" />
               <header className={styles.offerMeta}>
                 <span className={styles.offerRank}>
                   {String(index + 1).padStart(2, "0")}
@@ -80,7 +81,7 @@ export function Partners({ config }: { config: LandingConfig }) {
                   className={styles.offerCta}
                   rel="nofollow sponsored noopener"
                 >
-                  {partners.play}
+                  {partners.play} {partner.name}
                 </a>
                 <p className={styles.offerLegal}>{partners.legal}</p>
               </footer>
