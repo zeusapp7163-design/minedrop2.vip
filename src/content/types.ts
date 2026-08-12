@@ -196,6 +196,13 @@ export type LandingConfig = {
       play: string;
       legal: string;
     };
+    ageGate: {
+      title: string;
+      text: string;
+      confirm: string;
+      deny: string;
+      denied: string;
+    };
     faq: {
       eyebrow: string;
       title: string;

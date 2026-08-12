@@ -4,11 +4,12 @@ import {
   AFFILIATE_LINKS_ENABLED,
   type LandingConfig,
 } from "@/content";
+import { AgeGateLink } from "@/components/AgeGateLink";
 import { PromoCopyButton } from "@/components/PromoCopyButton";
 import styles from "./Landing.module.css";
 
 export function Partners({ config }: { config: LandingConfig }) {
-  const { partners } = config.ui;
+  const { partners, ageGate } = config.ui;
 
   return (
     <Section
@@ -80,13 +81,13 @@ export function Partners({ config }: { config: LandingConfig }) {
                   <p className={styles.noPromo}>{partners.noPromo}</p>
                 )}
                 {AFFILIATE_LINKS_ENABLED ? (
-                  <a
+                  <AgeGateLink
                     href={`/${partner.id}`}
                     className={styles.offerCta}
-                    rel="nofollow sponsored noopener"
+                    copy={ageGate}
                   >
                     {partners.play} {partner.name}
-                  </a>
+                  </AgeGateLink>
                 ) : (
                   <span
                     className={`${styles.offerCta} ${styles.offerCtaDisabled}`}

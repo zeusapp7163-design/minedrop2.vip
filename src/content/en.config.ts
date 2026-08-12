@@ -291,6 +291,13 @@ export const enConfig = {
       play: "Play at",
       legal: "18+ · Play responsibly",
     },
+    ageGate: {
+      title: "Are you 18 or older?",
+      text: "Access to platforms is available to adults only. Please play responsibly.",
+      confirm: "Yes, I am 18+",
+      deny: "No",
+      denied: "Access is limited to users aged 18+.",
+    },
     faq: {
       eyebrow: "FAQ",
       title: "Quick answers",
@@ -300,7 +307,7 @@ export const enConfig = {
       text: "Mine Drop 2 review: game specs, mechanics, screenshots and platforms where the slot may be available.",
       cta: "Choose a platform",
       legal:
-        "18+. Play responsibly. Gambling can be addictive. This site is not the developer’s official page. Affiliate links may be temporarily disabled.",
+        "18+. Play responsibly. Gambling can be addictive. This site is not the developer’s official page. This website uses affiliate links.",
     },
     schemaOffer: "A free demo mode may be available",
     howToName: "How to play Mine Drop 2",
