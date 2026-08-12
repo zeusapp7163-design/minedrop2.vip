@@ -1,24 +1,25 @@
-import { FAQ } from "@/lib/site";
+import { Container, Section, SectionHeader } from "@/components/ui";
+import { landingConfig } from "@/content/minedrop2.config";
+import styles from "./Landing.module.css";
 
 export function Faq() {
   return (
-    <section id="faq" className="band anchor" aria-labelledby="faq-title">
-      <div className="shell sec">
-        <div style={{ maxWidth: "42rem" }}>
-          <p className="kicker">FAQ</p>
-          <h2 id="faq-title" className="h2">
-            Частые вопросы
-          </h2>
-          <p className="lede">
-            Где играть, есть ли демо, чем Mine Drop 2 отличается от Mine Slot 2.
-          </p>
-          <div className="faq">
-            {FAQ.map((item) => (
-              <details key={item.question}>
+    <Section id="faq" aria-labelledby="faq-title">
+      <Container>
+        <div className={styles.faqLayout}>
+          <SectionHeader
+            eyebrow="FAQ"
+            title="Коротко о главном"
+            titleId="faq-title"
+            lead="Ответы про демо, RTP, механику и отличие от Mine Slot 2."
+          />
+          <div className={styles.faqList}>
+            {landingConfig.faq.map((item) => (
+              <details key={item.question} className={styles.faqItem}>
                 <summary>
                   <span>{item.question}</span>
-                  <span className="faq__chev" aria-hidden>
-                    ▾
+                  <span className={styles.faqIcon} aria-hidden="true">
+                    +
                   </span>
                 </summary>
                 <p>{item.answer}</p>
@@ -26,7 +27,7 @@ export function Faq() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

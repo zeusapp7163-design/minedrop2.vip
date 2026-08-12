@@ -15,17 +15,16 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main id="content">
         <Hero />
         <Specs />
-        <Partners />
         <About />
         <HowPlay />
         <Features />
         <Rtp />
         <Compare />
         <Demo />
-        <Partners id="play-again" compact />
+        <Partners />
         <Faq />
       </main>
       <Footer />

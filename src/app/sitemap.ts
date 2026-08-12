@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/site";
+import { landingConfig } from "@/content/minedrop2.config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const { site } = landingConfig;
+
   return [
     {
-      url: SITE.url,
-      lastModified: new Date("2026-08-12"),
+      url: site.url,
+      lastModified: new Date(site.updated),
       changeFrequency: "weekly",
       priority: 1,
     },

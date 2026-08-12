@@ -1,48 +1,65 @@
 import Image from "next/image";
+import { landingConfig } from "@/content/minedrop2.config";
+import { ButtonLink, Container } from "@/components/ui";
+import styles from "./Landing.module.css";
 
 export function Hero() {
-  return (
-    <header className="hero">
-      <div className="shell hero__grid">
-        <figure className="hero__cover">
-          <Image
-            src="/media/cover.webp"
-            alt="Обложка слота Mine Drop 2 от Paperclip Gaming"
-            width={180}
-            height={240}
-            priority
-            sizes="(max-width: 639px) 88px, (max-width: 899px) 140px, 180px"
-          />
-        </figure>
+  const { game } = landingConfig;
 
-        <div className="hero__copy">
-          <p className="kicker">Официальный сайт · Paperclip Gaming</p>
-          <h1 className="hero__h1">Mine Drop 2</h1>
-          <p className="hero__text">
-            Dig-burst слот на Stake Engine. Играйте онлайн или в демо — RTP
-            96.70%, max ×50000.
-          </p>
-          <div className="row-btns">
-            <a href="#play" className="btn btn-gold">
-              Играть
-            </a>
-            <a href="#demo" className="btn btn-line">
-              Демо
-            </a>
+  return (
+    <section className={styles.hero} aria-labelledby="page-title">
+      <Container>
+        <div className={styles.heroPanel}>
+          <div className={styles.heroCopy}>
+            <p className={styles.heroBadge}>
+              {game.provider} · {game.engine}
+            </p>
+            <h1 id="page-title" className={styles.heroTitle}>
+              {game.name}
+            </h1>
+            <p className={styles.heroLead}>{game.heroLead}</p>
+            <div className={styles.heroActions}>
+              <ButtonLink href="#play">Играть</ButtonLink>
+              <ButtonLink href="#screens" variant="secondary">
+                Смотреть игру
+              </ButtonLink>
+            </div>
+            <ul className={styles.heroFacts} aria-label="Ключевые параметры игры">
+              <li className={styles.heroFact}>
+                RTP <strong>{game.rtp}</strong>
+              </li>
+              <li className={styles.heroFact}>
+                Max <strong>{game.maxWin}</strong>
+              </li>
+              <li className={styles.heroFact}>
+                Риск <strong>{game.volatility}</strong>
+              </li>
+            </ul>
           </div>
-          <ul className="hero__stats" aria-label="Ключевые параметры">
-            <li className="pill">
-              RTP <b>96.70%</b>
-            </li>
-            <li className="pill">
-              Max <b>×50000</b>
-            </li>
-            <li className="pill">
-              Вола <b>High</b>
-            </li>
-          </ul>
+
+          <div className={styles.heroVisual} aria-label="Визуал Mine Drop 2">
+            <div className={styles.heroScreen}>
+              <Image
+                src="/media/ui-3.webp"
+                alt="Активный dig-burst раунд Mine Drop 2"
+                fill
+                priority
+                sizes="(max-width: 799px) 100vw, 46vw"
+              />
+            </div>
+            <figure className={styles.heroCover}>
+              <Image
+                src={game.cover}
+                alt={`Обложка ${game.name}`}
+                width={408}
+                height={546}
+                priority
+                sizes="(max-width: 799px) 28vw, 184px"
+              />
+            </figure>
+          </div>
         </div>
-      </div>
-    </header>
+      </Container>
+    </section>
   );
 }

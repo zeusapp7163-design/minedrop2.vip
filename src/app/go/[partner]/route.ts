@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
-
-const DESTINATIONS: Record<string, string> = {
-  "1win":
-    "https://one-vv6649.com/casino/list?open=register&sub1=black",
-  jetton:
-    "https://jtbetlab.click/ch7v2YRRqma?click_id=md2&target_id=/&target_type=registration",
-  stake: "https://stake3098.com/?c=blackDemo",
-};
+import { PARTNER_DESTINATIONS } from "@/content/minedrop2.config";
 
 type RouteContext = {
   params: Promise<{ partner: string }>;
@@ -14,7 +7,7 @@ type RouteContext = {
 
 export async function GET(request: Request, context: RouteContext) {
   const { partner } = await context.params;
-  const dest = DESTINATIONS[partner.toLowerCase()];
+  const dest = PARTNER_DESTINATIONS[partner.toLowerCase()];
 
   if (!dest) {
     return NextResponse.redirect(new URL("/", request.url), 302);

@@ -1,7 +1,8 @@
+import type { CSSProperties } from "react";
 import type { Metadata, Viewport } from "next";
 import { Manrope, Unbounded } from "next/font/google";
 import { JsonLd, buildPageSchemas } from "@/components/JsonLd";
-import { FAQ, SITE } from "@/lib/site";
+import { landingConfig } from "@/content/minedrop2.config";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -16,13 +17,12 @@ const unbounded = Unbounded({
   display: "swap",
 });
 
+const { site, game, theme } = landingConfig;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
-  title: {
-    default: SITE.title,
-    template: `%s · ${SITE.domain}`,
-  },
-  description: SITE.description,
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
   keywords: [
     "mine drop 2",
     "minedrop 2",
@@ -33,40 +33,26 @@ export const metadata: Metadata = {
     "mine drop 2 слот",
     "майне дроп 2",
   ],
-  authors: [{ name: SITE.domain }],
-  alternates: {
-    canonical: SITE.url,
-  },
+  authors: [{ name: site.domain }],
+  alternates: { canonical: site.url },
   openGraph: {
     type: "website",
-    locale: SITE.locale,
-    url: SITE.url,
-    siteName: SITE.domain,
-    title: SITE.title,
-    description: SITE.description,
-    images: [
-      {
-        url: "/media/cover.webp",
-        width: 600,
-        height: 800,
-        alt: "Mine Drop 2 — официальная обложка",
-      },
-    ],
+    locale: site.locale,
+    url: site.url,
+    siteName: site.domain,
+    title: site.title,
+    description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE.title,
-    description: SITE.description,
-    images: ["/media/cover.webp"],
+    title: site.title,
+    description: site.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   icons: {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/media/cover.webp", type: "image/webp" },
+      { url: game.cover, type: "image/webp" },
     ],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
     shortcut: ["/favicon.ico"],
@@ -74,21 +60,27 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#08090c",
   width: "device-width",
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  const schemas = buildPageSchemas([...FAQ]);
+const themeStyle = {
+  "--game-sky": theme.sky,
+  "--game-ore": theme.ore,
+  "--game-sand": theme.sand,
+  "--game-grass": theme.grass,
+} as CSSProperties;
 
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={`${manrope.variable} ${unbounded.variable} h-full antialiased`}
+      className={`${manrope.variable} ${unbounded.variable}`}
+      style={themeStyle}
     >
-      <body className="min-h-full font-sans text-fg">
-        <JsonLd data={schemas} />
+      <body>
+        <JsonLd data={buildPageSchemas()} />
         {children}
       </body>
     </html>

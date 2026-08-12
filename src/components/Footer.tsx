@@ -1,26 +1,31 @@
+import { ButtonLink, Container } from "@/components/ui";
+import { landingConfig } from "@/content/minedrop2.config";
+import styles from "./Landing.module.css";
+
 export function Footer() {
+  const { site, game } = landingConfig;
+
   return (
-    <footer className="band">
-      <div className="shell foot">
-        <div className="foot__row">
+    <footer className={styles.footer}>
+      <Container>
+        <div className={styles.footerMain}>
           <div>
-            <p className="logo">
-              minedrop2<i>.vip</i>
+            <p className={styles.brand}>
+              minedrop2<span className={styles.brandAccent}>.vip</span>
             </p>
-            <p className="lede" style={{ marginTop: "0.55rem" }}>
-              Официальный сайт Mine Drop 2 — Paperclip Gaming / Stake Engine.
+            <p className={styles.footerText}>
+              Обзор {game.name}: параметры, механика, интерфейс и площадки для
+              запуска.
             </p>
           </div>
-          <a href="#play" className="btn btn-gold">
-            Играть
-          </a>
+          <ButtonLink href="#play">Выбрать площадку</ButtonLink>
         </div>
-        <p className="foot__legal">
-          <strong style={{ color: "var(--fg)" }}>18+</strong>. Играйте
-          ответственно. Азартные игры могут вызывать зависимость. На сайте
-          есть партнёрские ссылки. © {new Date().getFullYear()} minedrop2.vip
+        <p className={styles.footerLegal}>
+          <strong>18+</strong>. Играйте ответственно. Азартные игры могут
+          вызывать зависимость. На сайте используются партнёрские ссылки. ©{" "}
+          {new Date().getFullYear()} {site.domain}
         </p>
-      </div>
+      </Container>
     </footer>
   );
 }

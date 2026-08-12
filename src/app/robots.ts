@@ -1,14 +1,16 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/site";
+import { landingConfig } from "@/content/minedrop2.config";
 
 export default function robots(): MetadataRoute.Robots {
+  const { site } = landingConfig;
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
       disallow: ["/go/"],
     },
-    sitemap: `${SITE.url}/sitemap.xml`,
-    host: SITE.url,
+    sitemap: `${site.url}/sitemap.xml`,
+    host: site.url,
   };
 }

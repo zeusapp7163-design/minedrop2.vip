@@ -1,39 +1,46 @@
+import { Card, Container, Section, SectionHeader } from "@/components/ui";
+import { landingConfig } from "@/content/minedrop2.config";
+import styles from "./Landing.module.css";
+
 export function Rtp() {
+  const { game } = landingConfig;
+  const items = [
+    {
+      value: game.rtp,
+      title: "Теоретический возврат",
+      text: "RTP работает на длинной дистанции. Результат одной короткой сессии может сильно отличаться.",
+    },
+    {
+      value: game.volatility,
+      title: "Профиль риска",
+      text: "Между яркими событиями возможны спокойные отрезки. Размер ставки должен учитывать эту дистанцию.",
+    },
+    {
+      value: game.maxWin,
+      title: "Максимальный потенциал",
+      text: "Высокий потолок относится к редким исходам. Bonus Buy дополнительно повышает дисперсию.",
+    },
+  ];
+
   return (
-    <section id="rtp" className="band anchor" aria-labelledby="rtp-title">
-      <div className="shell sec">
-        <p className="kicker">Математика</p>
-        <h2 id="rtp-title" className="h2">
-          RTP, волатильность и риск
-        </h2>
-        <p className="lede">
-          Цифры полезны, если читать их как профиль риска — а не как обещание
-          вечера.
-        </p>
-        <div className="cards-3">
-          <article className="tile">
-            <h3>RTP 96.70%</h3>
-            <p>
-              Теоретический возврат на длинной дистанции. На сотнях спинов
-              отклонение от теории — обычное дело, особенно в dig-burst слотах.
-            </p>
-          </article>
-          <article className="tile">
-            <h3>Высокая волатильность</h3>
-            <p>
-              Сессии бывают «тихими». Ставка должна переживать длинные отрезки
-              без ярких событий — иначе банкролл закончится раньше механики.
-            </p>
-          </article>
-          <article className="tile">
-            <h3>Max ×50000</h3>
-            <p>
-              Высокий потолок означает редкий хвост распределения. Bonus Buy
-              усиливает дисперсию — держите отдельный лимит на покупки.
-            </p>
-          </article>
+    <Section id="math" tone="soft" aria-labelledby="math-title">
+      <Container>
+        <SectionHeader
+          eyebrow="Математика"
+          title="Цифры без обещаний"
+          titleId="math-title"
+          lead="RTP, волатильность и max win описывают модель игры, но не гарантируют результат конкретного запуска."
+        />
+        <div className={styles.riskGrid}>
+          {items.map((item) => (
+            <Card key={item.title} className={styles.riskCard}>
+              <span className={styles.riskValue}>{item.value}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </Card>
+          ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

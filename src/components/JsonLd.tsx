@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { landingConfig } from "@/content/minedrop2.config";
 
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
@@ -15,62 +15,75 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-export function buildPageSchemas(faq: { question: string; answer: string }[]) {
-  const webpage = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${SITE.url}/#webpage`,
-    url: SITE.url,
-    name: SITE.title,
-    description: SITE.description,
-    inLanguage: "ru-RU",
-    isPartOf: {
+export function buildPageSchemas() {
+  const { site, game, faq } = landingConfig;
+  const websiteId = `${site.url}/#website`;
+  const webpageId = `${site.url}/#webpage`;
+  const gameId = `${site.url}/#game`;
+
+  return [
+    {
+      "@context": "https://schema.org",
       "@type": "WebSite",
-      name: SITE.domain,
-      url: SITE.url,
+      "@id": websiteId,
+      url: site.url,
+      name: site.domain,
+      inLanguage: "ru-RU",
     },
-    about: { "@id": `${SITE.url}/#game` },
-    primaryImageOfPage: {
-      "@type": "ImageObject",
-      url: `${SITE.url}/media/cover.webp`,
-    },
-  };
-
-  const game = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": `${SITE.url}/#game`,
-    name: "Mine Drop 2",
-    alternateName: ["Minedrop 2", "Mine Drop 2 слот"],
-    applicationCategory: "GameApplication",
-    operatingSystem: "Web",
-    description: SITE.description,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      description: "Демо доступно бесплатно; игра на деньги — через лицензированные казино",
-    },
-    author: {
-      "@type": "Organization",
-      name: "Paperclip Gaming",
-    },
-    datePublished: "2026-07-27",
-  };
-
-  const faqPage = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${SITE.url}/#faq`,
-    mainEntity: faq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": webpageId,
+      url: site.url,
+      name: site.title,
+      description: site.description,
+      inLanguage: "ru-RU",
+      datePublished: site.published,
+      dateModified: site.updated,
+      isPartOf: { "@id": websiteId },
+      about: { "@id": gameId },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${site.url}${game.cover}`,
+        width: 408,
+        height: 546,
       },
-    })),
-  };
-
-  return [webpage, game, faqPage];
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": gameId,
+      url: site.url,
+      name: game.name,
+      alternateName: game.alternateNames,
+      image: `${site.url}${game.cover}`,
+      applicationCategory: "GameApplication",
+      operatingSystem: "Web",
+      description: site.description,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Демо-режим может быть доступен бесплатно",
+      },
+      author: {
+        "@type": "Organization",
+        name: game.provider,
+      },
+      datePublished: site.published,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ];
 }
