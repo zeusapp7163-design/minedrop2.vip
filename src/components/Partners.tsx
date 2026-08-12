@@ -77,7 +77,7 @@ export function Partners({ config }: { config: LandingConfig }) {
                   <p className={styles.noPromo}>{partners.noPromo}</p>
                 )}
                 <a
-                  href={`/go/${partner.id}`}
+                  href={`/${partner.id}`}
                   className={styles.offerCta}
                   rel="nofollow sponsored noopener"
                 >

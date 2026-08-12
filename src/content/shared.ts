@@ -54,8 +54,8 @@ export const PARTNER_BASE = [
 ] as const;
 
 export const PARTNER_DESTINATIONS: Record<string, string> = {
-  "1win": "https://one-vv6649.com/casino/list?open=register&sub1=black",
+  "1win": "https://one-vv6649.com/casino/list?open=register&sub1=mine",
   jetton:
-    "https://jtbetlab.click/ch7v2YRRqma?click_id=md2&target_id=/&target_type=registration",
+    "https://jtbetlab.click/ch7v2YRRqma?click_id={click_id}&target_id=/&target_type=registration",
   stake: "https://stake3098.com/?c=blackDemo",
 };
