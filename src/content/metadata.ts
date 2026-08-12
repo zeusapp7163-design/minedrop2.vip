@@ -15,6 +15,9 @@ export function buildMetadata(config: LandingConfig): Metadata {
     description: site.description,
     keywords: site.keywords,
     authors: [{ name: site.domain }],
+    verification: {
+      yandex: "392d368eeaf27d88",
+    },
     alternates: {
       canonical: pageUrl,
       languages: {
