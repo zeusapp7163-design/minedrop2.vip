@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { landingConfig } from "@/content/minedrop2.config";
 import { ButtonLink, Container } from "@/components/ui";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Hero() {
-  const { game } = landingConfig;
+export function Hero({ config }: { config: LandingConfig }) {
+  const { game, ui } = config;
 
   return (
     <section className={styles.hero} aria-labelledby="page-title">
@@ -19,29 +19,29 @@ export function Hero() {
             </h1>
             <p className={styles.heroLead}>{game.heroLead}</p>
             <div className={styles.heroActions}>
-              <ButtonLink href="#play">Играть</ButtonLink>
+              <ButtonLink href="#play">{ui.hero.primaryCta}</ButtonLink>
               <ButtonLink href="#screens" variant="secondary">
-                Смотреть игру
+                {ui.hero.secondaryCta}
               </ButtonLink>
             </div>
-            <ul className={styles.heroFacts} aria-label="Ключевые параметры игры">
+            <ul className={styles.heroFacts} aria-label={ui.hero.factsLabel}>
               <li className={styles.heroFact}>
-                RTP <strong>{game.rtp}</strong>
+                {ui.hero.rtpLabel} <strong>{game.rtp}</strong>
               </li>
               <li className={styles.heroFact}>
-                Max <strong>{game.maxWin}</strong>
+                {ui.hero.maxLabel} <strong>{game.maxWin}</strong>
               </li>
               <li className={styles.heroFact}>
-                Риск <strong>{game.volatility}</strong>
+                {ui.hero.riskLabel} <strong>{game.volatility}</strong>
               </li>
             </ul>
           </div>
 
-          <div className={styles.heroVisual} aria-label="Визуал Mine Drop 2">
+          <div className={styles.heroVisual} aria-label={ui.hero.visualLabel}>
             <div className={styles.heroScreen}>
               <Image
                 src="/media/ui-3.webp"
-                alt="Активный dig-burst раунд Mine Drop 2"
+                alt={ui.hero.screenAlt}
                 fill
                 priority
                 sizes="(max-width: 799px) 100vw, 46vw"
@@ -50,7 +50,7 @@ export function Hero() {
             <figure className={styles.heroCover}>
               <Image
                 src={game.cover}
-                alt={`Обложка ${game.name}`}
+                alt={ui.hero.coverAlt}
                 width={408}
                 height={546}
                 priority

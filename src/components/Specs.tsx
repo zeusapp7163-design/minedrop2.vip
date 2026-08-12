@@ -1,16 +1,16 @@
 import { Container } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Specs() {
+export function Specs({ config }: { config: LandingConfig }) {
   return (
     <section aria-labelledby="specs-title">
       <Container>
         <h2 id="specs-title" className="sr-only">
-          Характеристики Mine Drop 2
+          {config.ui.specsTitle}
         </h2>
         <dl className={styles.stats}>
-          {landingConfig.stats.map((item) => (
+          {config.stats.map((item) => (
             <div key={item.label} className={styles.stat}>
               <dt>{item.label}</dt>
               <dd>{item.value}</dd>

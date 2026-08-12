@@ -1,44 +1,42 @@
 import { Container, DataTable, Section, SectionHeader } from "@/components/ui";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-const rows = [
-  ["Провайдер", "Paperclip Gaming", "InOut"],
-  ["Движок", "Stake Engine", "Экосистема InOut"],
-  ["Серия", "Продолжение Mine Drop", "Продолжение Mine Slot"],
-  ["Правильный запрос", "Mine Drop 2 / Minedrop 2", "Mine Slot 2"],
-];
+export function Compare({ config }: { config: LandingConfig }) {
+  const { compare } = config.ui;
 
-export function Compare() {
   return (
     <Section id="compare" aria-labelledby="compare-title">
       <Container>
         <SectionHeader
-          eyebrow="Не перепутайте"
-          title="Mine Drop 2 — не Mine Slot 2"
+          eyebrow={compare.eyebrow}
+          title={compare.title}
           titleId="compare-title"
-          lead="Названия похожи, но это разные игры, провайдеры и продуктовые линейки."
+          lead={compare.lead}
         />
         <div className={styles.compareWrap}>
-          <DataTable caption="Сравнение Mine Drop 2 и Mine Slot 2">
+          <DataTable caption={compare.caption}>
             <thead>
               <tr>
-                <th scope="col">Критерий</th>
-                <th scope="col">Mine Drop 2</th>
-                <th scope="col">Mine Slot 2</th>
+                {compare.columns.map((column) => (
+                  <th key={column} scope="col">
+                    {column}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {rows.map(([label, mineDrop, mineSlot]) => (
-                <tr key={label}>
-                  <th scope="row">{label}</th>
-                  <td>{mineDrop}</td>
-                  <td>{mineSlot}</td>
+              {config.compareRows.map((row) => (
+                <tr key={row.label}>
+                  <th scope="row">{row.label}</th>
+                  <td>{row.mineDrop}</td>
+                  <td>{row.mineSlot}</td>
                 </tr>
               ))}
             </tbody>
           </DataTable>
           <a href="#screens" className={styles.compareLink}>
-            Посмотреть интерфейс Mine Drop 2 →
+            {compare.link}
           </a>
         </div>
       </Container>

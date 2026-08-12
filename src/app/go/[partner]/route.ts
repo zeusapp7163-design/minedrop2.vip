@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PARTNER_DESTINATIONS } from "@/content/minedrop2.config";
+import { PARTNER_DESTINATIONS } from "@/content";
 
 type RouteContext = {
   params: Promise<{ partner: string }>;

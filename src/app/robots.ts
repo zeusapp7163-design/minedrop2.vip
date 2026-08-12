@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
-import { landingConfig } from "@/content/minedrop2.config";
+import { getLandingConfig } from "@/content";
 
 export default function robots(): MetadataRoute.Robots {
-  const { site } = landingConfig;
+  const { site } = getLandingConfig("ru");
 
   return {
     rules: {

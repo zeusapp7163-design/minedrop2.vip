@@ -1,9 +1,9 @@
 import { ButtonLink, Container } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Footer() {
-  const { site, game } = landingConfig;
+export function Footer({ config }: { config: LandingConfig }) {
+  const { site, ui } = config;
 
   return (
     <footer className={styles.footer}>
@@ -13,17 +13,12 @@ export function Footer() {
             <p className={styles.brand}>
               minedrop2<span className={styles.brandAccent}>.vip</span>
             </p>
-            <p className={styles.footerText}>
-              Обзор {game.name}: параметры, механика, интерфейс и площадки для
-              запуска.
-            </p>
+            <p className={styles.footerText}>{ui.footer.text}</p>
           </div>
-          <ButtonLink href="#play">Выбрать площадку</ButtonLink>
+          <ButtonLink href="#play">{ui.footer.cta}</ButtonLink>
         </div>
         <p className={styles.footerLegal}>
-          <strong>18+</strong>. Играйте ответственно. Азартные игры могут
-          вызывать зависимость. На сайте используются партнёрские ссылки. ©{" "}
-          {new Date().getFullYear()} {site.domain}
+          {ui.footer.legal} © {new Date().getFullYear()} {site.domain}
         </p>
       </Container>
     </footer>

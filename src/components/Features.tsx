@@ -1,20 +1,22 @@
 import Image from "next/image";
 import { Card, Container, Section, SectionHeader } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Features() {
+export function Features({ config }: { config: LandingConfig }) {
+  const { features } = config.ui;
+
   return (
     <Section id="features" aria-labelledby="features-title">
       <Container>
         <SectionHeader
-          eyebrow="Ключевые события"
-          title="Три механики, которые меняют темп"
+          eyebrow={features.eyebrow}
+          title={features.title}
           titleId="features-title"
-          lead="Не просто список функций: каждый блок показывает, как выглядит событие и зачем оно нужно в раунде."
+          lead={features.lead}
         />
         <div className={styles.featureGrid}>
-          {landingConfig.features.map((feature) => (
+          {config.features.map((feature) => (
             <Card key={feature.title} className={styles.featureCard}>
               <div className={styles.featureImage}>
                 <Image

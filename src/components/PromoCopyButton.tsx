@@ -3,7 +3,17 @@
 import { useState } from "react";
 import styles from "./Landing.module.css";
 
-export function PromoCopyButton({ code }: { code: string }) {
+export function PromoCopyButton({
+  code,
+  copyLabel,
+  copiedLabel,
+  ariaLabel,
+}: {
+  code: string;
+  copyLabel: string;
+  copiedLabel: string;
+  ariaLabel: string;
+}) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
@@ -21,9 +31,9 @@ export function PromoCopyButton({ code }: { code: string }) {
       type="button"
       className={`${styles.copyButton} ${copied ? styles.copyDone : ""}`}
       onClick={copy}
-      aria-label={`Скопировать промокод ${code}`}
+      aria-label={`${ariaLabel} ${code}`}
     >
-      {copied ? "Готово" : "Копировать"}
+      {copied ? copiedLabel : copyLabel}
     </button>
   );
 }

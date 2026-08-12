@@ -1,4 +1,4 @@
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
@@ -15,10 +15,11 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-export function buildPageSchemas() {
-  const { site, game, faq } = landingConfig;
+export function buildPageSchemas(config: LandingConfig) {
+  const { site, game, faq, ui, path, language } = config;
+  const pageUrl = path === "/" ? site.url : `${site.url}${path}`;
   const websiteId = `${site.url}/#website`;
-  const webpageId = `${site.url}/#webpage`;
+  const webpageId = `${pageUrl}/#webpage`;
   const gameId = `${site.url}/#game`;
 
   return [
@@ -28,16 +29,16 @@ export function buildPageSchemas() {
       "@id": websiteId,
       url: site.url,
       name: site.domain,
-      inLanguage: "ru-RU",
+      inLanguage: ["ru-RU", "en-US"],
     },
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "@id": webpageId,
-      url: site.url,
+      url: pageUrl,
       name: site.title,
       description: site.description,
-      inLanguage: "ru-RU",
+      inLanguage: language,
       datePublished: site.published,
       dateModified: site.updated,
       isPartOf: { "@id": websiteId },
@@ -53,7 +54,7 @@ export function buildPageSchemas() {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "@id": gameId,
-      url: site.url,
+      url: pageUrl,
       name: game.name,
       alternateName: game.alternateNames,
       image: `${site.url}${game.cover}`,
@@ -64,7 +65,7 @@ export function buildPageSchemas() {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
-        description: "Демо-режим может быть доступен бесплатно",
+        description: ui.schemaOffer,
       },
       author: {
         "@type": "Organization",
@@ -75,7 +76,8 @@ export function buildPageSchemas() {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "@id": `${site.url}/#faq`,
+      "@id": `${pageUrl}/#faq`,
+      inLanguage: language,
       mainEntity: faq.map((item) => ({
         "@type": "Question",
         name: item.question,

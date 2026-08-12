@@ -17,8 +17,6 @@ const nextConfig: NextConfig = {
       },
       { source: "/ru", destination: "/", permanent: false },
       { source: "/ru/:path*", destination: "/", permanent: false },
-      { source: "/en", destination: "/", permanent: false },
-      { source: "/en/:path*", destination: "/", permanent: false },
     ];
   },
 };

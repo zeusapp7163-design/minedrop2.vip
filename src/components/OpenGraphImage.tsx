@@ -1,12 +1,11 @@
 import { ImageResponse } from "next/og";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 
-export const alt = "Mine Drop 2 — играть онлайн";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const openGraphSize = { width: 1200, height: 630 };
+export const openGraphContentType = "image/png";
 
-export default function OpenGraphImage() {
-  const { site, game, theme } = landingConfig;
+export function createOpenGraphImage(config: LandingConfig) {
+  const { site, game, theme, ui } = config;
 
   return new ImageResponse(
     (
@@ -64,7 +63,7 @@ export default function OpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            Играть онлайн · RTP {game.rtp} · Max {game.maxWin}
+            {ui.ogTagline} · RTP {game.rtp} · Max {game.maxWin}
           </div>
           <div
             style={{
@@ -88,10 +87,9 @@ export default function OpenGraphImage() {
             border: "2px solid rgba(255,255,255,.18)",
             borderRadius: 28,
             boxShadow: "0 30px 80px rgba(0,0,0,.5)",
-            transform: "rotate(2deg)",
           }}
         >
-          {/* ImageResponse renders this into the generated social image. */}
+          {/* ImageResponse requires a native image element. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`${site.url}${game.cover}`}
@@ -103,6 +101,6 @@ export default function OpenGraphImage() {
         </div>
       </div>
     ),
-    size,
+    openGraphSize,
   );
 }

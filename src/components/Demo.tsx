@@ -1,21 +1,23 @@
 import Image from "next/image";
 import { ButtonLink, Container, Section, SectionHeader } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Demo() {
+export function Demo({ config }: { config: LandingConfig }) {
+  const { gallery } = config.ui;
+
   return (
     <Section id="screens" tone="soft" aria-labelledby="screens-title">
       <Container>
         <SectionHeader
-          eyebrow="Интерфейс"
-          title="Игра крупным планом"
+          eyebrow={gallery.eyebrow}
+          title={gallery.title}
           titleId="screens-title"
-          lead="Реальные кадры показывают структуру поля, прокоп и экран Bonus Buy без декоративных мокапов."
-          action={<ButtonLink href="#play">Выбрать площадку</ButtonLink>}
+          lead={gallery.lead}
+          action={<ButtonLink href="#play">{gallery.cta}</ButtonLink>}
         />
         <div className={styles.gallery}>
-          {landingConfig.gallery.map((shot) => (
+          {config.gallery.map((shot) => (
             <figure key={shot.src} className={styles.shot}>
               <div className={styles.shotImage}>
                 <Image

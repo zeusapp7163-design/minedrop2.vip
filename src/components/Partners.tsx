@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { Card, Container, Section, SectionHeader } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 import { PromoCopyButton } from "@/components/PromoCopyButton";
 import styles from "./Landing.module.css";
 
-export function Partners() {
+export function Partners({ config }: { config: LandingConfig }) {
+  const { partners } = config.ui;
+
   return (
     <Section
       id="play"
@@ -14,14 +16,14 @@ export function Partners() {
       <Container>
         <SectionHeader
           className={styles.partnerIntro}
-          eyebrow="Площадки"
-          title="Выберите, где запустить Mine Drop 2"
+          eyebrow={partners.eyebrow}
+          title={partners.title}
           titleId="play-title"
-          lead="Сравните бонус, промокод и рейтинг. Условия могут меняться — проверяйте их на стороне площадки перед регистрацией."
+          lead={partners.lead}
         />
 
         <div className={styles.partnerGrid}>
-          {landingConfig.partners.map((partner, index) => (
+          {config.partners.map((partner, index) => (
             <Card
               key={partner.id}
               className={`${styles.offer} ${index === 0 ? styles.offerFeatured : ""}`}
@@ -33,7 +35,7 @@ export function Partners() {
                 <span className={styles.offerBadge}>{partner.badge}</span>
                 <span
                   className={styles.offerRating}
-                  aria-label={`Рейтинг ${partner.rating}`}
+                  aria-label={`${partners.ratingLabel} ${partner.rating}`}
                 >
                   <strong>{partner.rating}</strong> ★
                 </span>
@@ -49,7 +51,7 @@ export function Partners() {
                     priority={index === 0}
                   />
                 </div>
-                <p className={styles.offerLabel}>Бонус новичкам</p>
+                <p className={styles.offerLabel}>{partners.welcomeBonus}</p>
                 <p className={styles.offerDeal}>
                   <span className={styles.offerValue}>{partner.bonusValue}</span>
                   <span className={styles.offerExtra}>{partner.bonusExtra}</span>
@@ -59,23 +61,28 @@ export function Partners() {
               <footer className={styles.offerFoot}>
                 {partner.promoCode ? (
                   <div className={styles.promo}>
-                    <span className={styles.promoLabel}>Код</span>
+                    <span className={styles.promoLabel}>
+                      {partners.promoLabel}
+                    </span>
                     <span className={styles.promoCode}>{partner.promoCode}</span>
-                    <PromoCopyButton code={partner.promoCode} />
+                    <PromoCopyButton
+                      code={partner.promoCode}
+                      copyLabel={partners.copy}
+                      copiedLabel={partners.copied}
+                      ariaLabel={partners.copyAria}
+                    />
                   </div>
                 ) : (
-                  <p className={styles.noPromo}>Бонусы без промокода</p>
+                  <p className={styles.noPromo}>{partners.noPromo}</p>
                 )}
                 <a
                   href={`/go/${partner.id}`}
                   className={styles.offerCta}
                   rel="nofollow sponsored noopener"
                 >
-                  Играть
+                  {partners.play}
                 </a>
-                <p className={styles.offerLegal}>
-                  18+ · Играйте ответственно
-                </p>
+                <p className={styles.offerLegal}>{partners.legal}</p>
               </footer>
             </Card>
           ))}

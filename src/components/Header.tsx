@@ -3,12 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ButtonLink, Container } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig, Locale } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Header() {
+export function Header({
+  config,
+  locale,
+}: {
+  config: LandingConfig;
+  locale: Locale;
+}) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLButtonElement>(null);
+  const { header } = config.ui;
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -29,16 +36,20 @@ export function Header() {
   return (
     <>
       <a href="#content" className={styles.skipLink}>
-        К содержанию
+        {header.skip}
       </a>
       <header className={styles.topbar}>
         <Container className={styles.topbarInner}>
-          <Link href="/" className={styles.brand} aria-label="minedrop2.vip">
+          <Link
+            href={config.path}
+            className={styles.brand}
+            aria-label="minedrop2.vip"
+          >
             minedrop2<span className={styles.brandAccent}>.vip</span>
           </Link>
 
-          <nav className={styles.nav} aria-label="Основная навигация">
-            {landingConfig.nav.map((item) => (
+          <nav className={styles.nav} aria-label={header.navLabel}>
+            {config.nav.map((item) => (
               <a key={item.href} href={item.href}>
                 {item.label}
               </a>
@@ -46,8 +57,27 @@ export function Header() {
           </nav>
 
           <div className={styles.topbarActions}>
-            <ButtonLink href="#play" size="small">
-              Играть
+            <nav
+              className={styles.localeSwitch}
+              aria-label={header.languageLabel}
+            >
+              <Link
+                href="/"
+                className={locale === "ru" ? styles.localeActive : undefined}
+                aria-current={locale === "ru" ? "page" : undefined}
+              >
+                RU
+              </Link>
+              <Link
+                href="/en"
+                className={locale === "en" ? styles.localeActive : undefined}
+                aria-current={locale === "en" ? "page" : undefined}
+              >
+                EN
+              </Link>
+            </nav>
+            <ButtonLink href="#play" size="small" className={styles.headerCta}>
+              {header.play}
             </ButtonLink>
             <button
               ref={menuRef}
@@ -55,7 +85,7 @@ export function Header() {
               className={styles.menuButton}
               aria-expanded={open}
               aria-controls="mobile-navigation"
-              aria-label={open ? "Закрыть меню" : "Открыть меню"}
+              aria-label={open ? header.closeMenu : header.openMenu}
               onClick={() => setOpen((value) => !value)}
             >
               {open ? "✕" : "☰"}
@@ -67,9 +97,9 @@ export function Header() {
           <nav
             id="mobile-navigation"
             className={styles.drawer}
-            aria-label="Мобильная навигация"
+            aria-label={header.mobileNavLabel}
           >
-            {landingConfig.nav.map((item) => (
+            {config.nav.map((item) => (
               <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
                 {item.label}
               </a>

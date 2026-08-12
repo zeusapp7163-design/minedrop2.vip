@@ -1,20 +1,22 @@
 import { Container, Section, SectionHeader } from "@/components/ui";
-import { landingConfig } from "@/content/minedrop2.config";
+import type { LandingConfig } from "@/content";
 import styles from "./Landing.module.css";
 
-export function Faq() {
+export function Faq({ config }: { config: LandingConfig }) {
+  const { faq } = config.ui;
+
   return (
     <Section id="faq" aria-labelledby="faq-title">
       <Container>
         <div className={styles.faqLayout}>
           <SectionHeader
-            eyebrow="FAQ"
-            title="Коротко о главном"
+            eyebrow={faq.eyebrow}
+            title={faq.title}
             titleId="faq-title"
-            lead="Ответы про демо, RTP, механику и отличие от Mine Slot 2."
+            lead={faq.lead}
           />
           <div className={styles.faqList}>
-            {landingConfig.faq.map((item) => (
+            {config.faq.map((item) => (
               <details key={item.question} className={styles.faqItem}>
                 <summary>
                   <span>{item.question}</span>
