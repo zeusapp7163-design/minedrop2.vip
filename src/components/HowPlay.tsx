@@ -1,6 +1,6 @@
 export function HowPlay() {
   return (
-    <section id="how" className="band band--soft anchor">
+    <section id="how" className="band band--tint anchor">
       <div className="shell sec">
         <p className="eyebrow">Как играть</p>
         <h2 className="title">Как играть в Mine Drop 2</h2>

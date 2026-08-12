@@ -4,27 +4,27 @@ import Image from "next/image";
 import { useState } from "react";
 import { PARTNERS } from "@/lib/site";
 
-function PromoCopy({ code }: { code: string }) {
-  const [copied, setCopied] = useState(false);
+function Promo({ code }: { code: string }) {
+  const [done, setDone] = useState(false);
+
   return (
-    <div className="card__promo">
-      <div>
-        <span style={{ color: "var(--muted)", fontSize: 10 }}>Код </span>
-        <code>{code}</code>
-      </div>
+    <div className="promo" aria-label={`Промокод ${code}`}>
+      <span className="promo__label">Код</span>
+      <span className="promo__code">{code}</span>
       <button
         type="button"
+        className={`promo__btn ${done ? "is-done" : ""}`}
         onClick={async () => {
           try {
             await navigator.clipboard.writeText(code);
-            setCopied(true);
-            window.setTimeout(() => setCopied(false), 1400);
           } catch {
             /* ignore */
           }
+          setDone(true);
+          window.setTimeout(() => setDone(false), 1800);
         }}
       >
-        {copied ? "OK" : "Копировать"}
+        {done ? "Готово" : "Копировать"}
       </button>
     </div>
   );
@@ -38,21 +38,24 @@ export function Partners({
   compact?: boolean;
 }) {
   return (
-    <section id={id} className="band band--soft anchor">
-      <div className={`shell sec ${compact ? "" : ""}`} style={compact ? { paddingBlock: "2.25rem" } : undefined}>
+    <section id={id} className="band band--tint anchor">
+      <div
+        className="shell sec"
+        style={compact ? { paddingBlock: "2.1rem" } : undefined}
+      >
         <p className="eyebrow">Топ казино</p>
         <h2 className="title">
           {compact ? "Готовы играть в Mine Drop 2?" : "Где играть в Mine Drop 2"}
         </h2>
-        <p className="lead">
-          Три площадки с бонусами — сравни и запускай слот.
-        </p>
+        <p className="lead">Три площадки с бонусами — сравни и запускай.</p>
 
         <div className="cash">
           {PARTNERS.map((p, i) => (
             <article key={`${id}-${p.id}`} className="card">
               <div className="card__top">
-                <span className="card__rank">{String(i + 1).padStart(2, "0")}</span>
+                <span className="card__rank">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span
                   className={`card__badge ${p.badge === "Топ" ? "card__badge--top" : ""}`}
                 >
@@ -69,7 +72,7 @@ export function Partners({
                     src={p.logo}
                     alt={p.name}
                     fill
-                    sizes="140px"
+                    sizes="148px"
                     className="object-contain"
                     priority={p.id === "1win" && id === "play"}
                   />
@@ -83,9 +86,9 @@ export function Partners({
 
               <div className="card__foot">
                 {p.promoCode ? (
-                  <PromoCopy code={p.promoCode} />
+                  <Promo code={p.promoCode} />
                 ) : (
-                  <p className="card__nopromo">Бонусы без промокода</p>
+                  <p className="promo__empty">Бонусы без промокода</p>
                 )}
                 <a
                   href={p.href}

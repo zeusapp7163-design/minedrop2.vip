@@ -1,6 +1,6 @@
 export function Rtp() {
   return (
-    <section id="rtp" className="band band--soft anchor">
+    <section id="rtp" className="band band--tint anchor">
       <div className="shell sec">
         <p className="eyebrow">Математика</p>
         <h2 className="title">RTP 96.70% и волатильность</h2>

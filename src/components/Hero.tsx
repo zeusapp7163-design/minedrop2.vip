@@ -4,6 +4,17 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="shell hero__stage">
+        <div className="hero__art">
+          <Image
+            src="/media/cover.webp"
+            alt="Mine Drop 2"
+            width={180}
+            height={240}
+            priority
+            sizes="(max-width: 899px) 112px, 180px"
+          />
+        </div>
+
         <div className="hero__copy">
           <p className="eyebrow">Официальный сайт · Paperclip Gaming</p>
           <h1 className="hero__h1">Mine Drop 2</h1>
@@ -30,17 +41,6 @@ export function Hero() {
               Вола <strong>High</strong>
             </span>
           </div>
-        </div>
-
-        <div className="hero__art">
-          <Image
-            src="/media/cover.webp"
-            alt="Mine Drop 2"
-            width={220}
-            height={293}
-            priority
-            sizes="(max-width: 899px) 96px, 220px"
-          />
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 8);
+    const onScroll = () => setSolid(window.scrollY > 6);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -57,13 +57,9 @@ export function Header() {
         </div>
       </div>
       {open ? (
-        <nav className="mobile-nav" aria-label="Мобильное меню">
+        <nav className="mobile-nav">
           {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-            >
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
               {item.label}
             </a>
           ))}

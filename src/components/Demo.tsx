@@ -8,7 +8,7 @@ const SHOTS = [
 
 export function Demo() {
   return (
-    <section id="demo" className="band band--soft anchor">
+    <section id="demo" className="band band--tint anchor">
       <div className="shell sec">
         <div
           style={{
