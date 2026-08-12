@@ -1,0 +1,44 @@
+import Image from "next/image";
+
+const SHOTS = [
+  { src: "/media/ui-1.jpg", alt: "Mine Drop 2 — шахта и сундуки" },
+  { src: "/media/ui-2.jpg", alt: "Mine Drop 2 — dig-burst раунд" },
+  { src: "/media/ui-5.webp", alt: "Mine Drop 2 — Bonus Buy" },
+] as const;
+
+export function Demo() {
+  return (
+    <section id="demo" className="section-rule scroll-target bg-bg-elevated">
+      <div className="page-shell section-pad">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <h2 className="font-display text-[1.65rem] font-semibold tracking-tight sm:text-3xl">
+              Demo Play
+            </h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-fg-muted sm:text-base">
+              Интерфейс слота: дроп, сундуки, Bonus Buy. Демо — без регистрации;
+              на деньги — через казино выше.
+            </p>
+          </div>
+          <a href="#play" className="btn-yellow shrink-0 self-stretch sm:self-auto">
+            Играть на деньги
+          </a>
+        </div>
+
+        <div className="shot-grid mt-8">
+          {SHOTS.map((shot) => (
+            <div key={shot.src} className="shot-card">
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 33vw"
+                className="object-cover object-top"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
