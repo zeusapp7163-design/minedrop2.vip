@@ -17,9 +17,9 @@ export const GAME = {
   rtp: "96.70%",
   volatility: "Высокая",
   maxWin: "×50000",
-  grid: "Дроп 5×3",
+  grid: "Дроп 5×3 над шахтой блоков",
   mechanics: "dig-burst / mining",
-  features: ["Blast Ore", "Ender Eye", "Bonus Buy"],
+  features: ["Blast Ore", "Ender Eye bonuses", "Bonus Buy"],
 } as const;
 
 export const PROMO_CODE = "ADBLOCK";
@@ -65,8 +65,10 @@ export const PARTNERS = [
 
 export const SPECS = [
   { label: "Провайдер", value: GAME.provider },
+  { label: "Движок", value: GAME.engine },
   { label: "Релиз", value: GAME.release },
   { label: "RTP", value: GAME.rtp },
+  { label: "Волатильность", value: GAME.volatility },
   { label: "Max win", value: GAME.maxWin },
 ] as const;
 
@@ -74,41 +76,41 @@ export const FAQ = [
   {
     question: "Где играть в Mine Drop 2 онлайн?",
     answer:
-      "На официальном сайте minedrop2.vip — прямые запуски на 1win, JetTon и Stake. Выберите казино, зарегистрируйтесь и откройте Mine Drop 2 / Minedrop 2 от Paperclip Gaming.",
+      "На официальном сайте minedrop2.vip собраны прямые запуски Mine Drop 2 (Minedrop 2): 1win, JetTon и Stake. Выберите казино, зарегистрируйтесь и откройте слот Paperclip Gaming в каталоге.",
   },
   {
     question: "Это официальный сайт Mine Drop 2?",
     answer:
-      "minedrop2.vip — официальная витрина слота для игроков: запуск онлайн, демо, характеристики и FAQ. Игра разработана Paperclip Gaming на Stake Engine.",
+      "minedrop2.vip — официальная витрина слота для игроков: играть онлайн на деньги, демо, характеристики, сравнения и FAQ. Сама игра — Paperclip Gaming на Stake Engine.",
   },
   {
     question: "Есть ли демо Mine Drop 2 без регистрации?",
     answer:
-      "Да. Демо доступно бесплатно без депозита. Для игры на деньги используйте кнопки казино на странице.",
+      "Да. Демо Mine Drop 2 можно смотреть без депозита и регистрации — чтобы понять dig-burst, Blast Ore и Bonus Buy. Для денег используйте кнопки «Играть онлайн».",
   },
   {
     question: "Какой RTP и max win у Mine Drop 2?",
     answer:
-      "RTP 96.70%, волатильность высокая, максимальный выигрыш ×50000 от ставки.",
+      "Заявленный RTP — 96.70%, волатильность высокая, максимальный выигрыш — ×50000 от ставки. На короткой сессии результат может сильно отличаться от теории.",
   },
   {
     question: "Mine Drop 2 и Mine Slot 2 — одна игра?",
     answer:
-      "Нет. Mine Drop 2 — Paperclip Gaming (Stake Engine). Mine Slot 2 — InOut. Названия похожи, провайдеры и механика разные.",
+      "Нет. Mine Drop 2 / Minedrop 2 — Paperclip Gaming (Stake Engine). Mine Slot 2 — продукт InOut. Если ищете «майне дроп 2» или «mine drop 2 слот», нужен именно Mine Drop 2.",
   },
   {
-    question: "Чем Mine Drop 2 отличается от Mine Drop?",
+    question: "Чем Mine Drop 2 отличается от первой части Mine Drop?",
     answer:
-      "Это сиквел: dig-burst, Blast Ore, Ender Eye bonuses и Bonus Buy, RTP 96.70%, max ×50000. Релиз ~27 июля 2026.",
+      "Это сиквел: обновлённый dig-burst цикл, Blast Ore, Ender Eye bonuses, Bonus Buy, RTP 96.70% и потолок ×50000. Релиз в Stake listing — около 27 июля 2026.",
   },
   {
-    question: "Как начать играть на деньги?",
+    question: "Как начать играть в Mine Drop 2 на деньги?",
     answer:
-      "Нажмите «Играть онлайн», выберите казино (1win / JetTon / Stake), создайте аккаунт, внесите депозит и найдите Mine Drop 2 в каталоге.",
+      "Нажмите «Играть онлайн», выберите 1win, JetTon или Stake, создайте аккаунт, внесите депозит и найдите Mine Drop 2 / Minedrop 2 от Paperclip — не перепутайте с Mine Slot 2.",
   },
   {
-    question: "Есть ли Bonus Buy?",
+    question: "Стоит ли покупать Bonus Buy?",
     answer:
-      "Да. Bonus Buy ускоряет вход в бонусный режим. Учитывайте высокую волатильность и цену покупки относительно банкролла.",
+      "Bonus Buy ускоряет вход в бонус, но повышает стоимость спина и дисперсию. Имеет смысл при заранее заданном лимите покупок. Для знакомства сначала обычные спины или демо.",
   },
 ] as const;
