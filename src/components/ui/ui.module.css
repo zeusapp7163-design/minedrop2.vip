@@ -43,7 +43,7 @@
   margin: 0;
   max-width: 52rem;
   font-family: var(--font-manrope), sans-serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.625rem, 3.5vw, 2.75rem);
   font-weight: 900;
   letter-spacing: -0.055em;
   line-height: 1.08;
@@ -156,6 +156,30 @@
 .table thead th {
   color: var(--fg);
   background: rgba(255, 255, 255, 0.035);
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding-block: var(--section-space);
+  }
+
+  .header {
+    gap: 0.55rem;
+  }
+
+  .lead {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .button {
+    min-height: 2.85rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem;
+  }
 }
 
 @media (min-width: 768px) {
