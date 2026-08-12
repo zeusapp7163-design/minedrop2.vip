@@ -62,6 +62,11 @@ export type CompareRow = {
   mineSlot: string;
 };
 
+export type AiFact = {
+  label: string;
+  value: string;
+};
+
 export type LandingConfig = {
   locale: Locale;
   path: "/" | "/en";
@@ -76,6 +81,14 @@ export type LandingConfig = {
     keywords: string[];
     published: string;
     updated: string;
+  };
+  ai: {
+    answerLabel: string;
+    answer: string;
+    factsLabel: string;
+    facts: AiFact[];
+    trustLabel: string;
+    trust: string;
   };
   theme: {
     sky: string;
@@ -194,6 +207,8 @@ export type LandingConfig = {
       legal: string;
     };
     schemaOffer: string;
+    howToName: string;
+    howToDescription: string;
     ogTagline: string;
   };
 };

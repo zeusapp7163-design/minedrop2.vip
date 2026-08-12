@@ -10,7 +10,7 @@ export const enConfig = {
     ogLocale: "en_US",
     title: "Mine Drop 2 — Play Online & Demo | Official Slot Site",
     description:
-      "Play Mine Drop 2 by Paperclip Gaming online or explore the demo. RTP 96.70%, max win ×50000, dig-burst gameplay, Blast Ore, Ender Eye and Bonus Buy.",
+      "Mine Drop 2 by Paperclip Gaming: RTP 96.70%, max win ×50000, dig-burst gameplay, Blast Ore, Ender Eye and Bonus Buy. Review, demo notes and where to play.",
     keywords: [
       "mine drop 2",
       "mine drop 2 play online",
@@ -20,7 +20,27 @@ export const enConfig = {
       "paperclip gaming mine drop 2",
       "mine drop 2 rtp",
       "mine drop 2 bonus buy",
+      "mine drop 2 review",
     ],
+  },
+  ai: {
+    answerLabel: "Quick answer",
+    answer:
+      "Mine Drop 2 is a mining dig-burst slot by Paperclip Gaming on Stake Engine, with a stated 96.70% RTP, high volatility and advertised max win of ×50000. It is not Mine Slot 2 — different studio, different product line. minedrop2.vip is an independent review site, not the developer’s official page.",
+    factsLabel: "Key searchable facts",
+    facts: [
+      { label: "Game", value: "Mine Drop 2" },
+      { label: "Provider", value: "Paperclip Gaming" },
+      { label: "Engine", value: "Stake Engine" },
+      { label: "RTP", value: "96.70%" },
+      { label: "Max win", value: "×50000" },
+      { label: "Volatility", value: "High" },
+      { label: "Format", value: "5×3 drop" },
+      { label: "Not the same as", value: "Mine Slot 2 (InOut)" },
+    ],
+    trustLabel: "About this site",
+    trust:
+      "Reviewed August 12, 2026. minedrop2.vip is not owned by Paperclip Gaming and does not accept wagers. RTP and max-win figures follow the game’s stated model; always verify platform terms with the operator.",
   },
   theme: SHARED_THEME,
   game: {
@@ -280,9 +300,12 @@ export const enConfig = {
       text: "Mine Drop 2 review: game specs, mechanics, screenshots and platforms where the slot may be available.",
       cta: "Choose a platform",
       legal:
-        "18+. Play responsibly. Gambling can be addictive. This website uses affiliate links.",
+        "18+. Play responsibly. Gambling can be addictive. This site is not the developer’s official page. Affiliate links may be temporarily disabled.",
     },
     schemaOffer: "A free demo mode may be available",
+    howToName: "How to play Mine Drop 2",
+    howToDescription:
+      "Step-by-step dig-burst flow: 5×3 drop, mine progression, Blast Ore, Ender Eye and stake control.",
     ogTagline: "Play online",
   },
 } satisfies LandingConfig;

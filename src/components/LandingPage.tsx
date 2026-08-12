@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { AiAnswer, TrustBlock } from "@/components/AiAnswer";
 import { Compare } from "@/components/Compare";
 import { Demo } from "@/components/Demo";
 import { Faq } from "@/components/Faq";
@@ -26,6 +27,7 @@ export function LandingPage({
       <Header config={config} locale={locale} />
       <main id="content">
         <Hero config={config} />
+        <AiAnswer config={config} />
         <About config={config} />
         <SeoHubLinks config={config} />
         <HowPlay config={config} />
@@ -35,6 +37,7 @@ export function LandingPage({
         <Demo config={config} />
         <Partners config={config} />
         <Faq config={config} />
+        <TrustBlock config={config} />
       </main>
       <Footer config={config} />
     </>

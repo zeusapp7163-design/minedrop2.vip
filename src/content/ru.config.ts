@@ -10,17 +10,37 @@ export const ruConfig = {
     ogLocale: "ru_RU",
     title: "Mine Drop 2 — Играть онлайн | Официальный сайт слота",
     description:
-      "Mine Drop 2 от Paperclip Gaming: обзор, демо и запуск онлайн. RTP 96.70%, max ×50000, dig-burst, Blast Ore, Ender Eye и Bonus Buy.",
+      "Mine Drop 2 от Paperclip Gaming: RTP 96.70%, max ×50000, dig-burst, Blast Ore, Ender Eye и Bonus Buy. Обзор, демо и где запустить онлайн.",
     keywords: [
       "mine drop 2",
       "minedrop 2",
       "mine drop 2 играть",
       "mine drop 2 играть онлайн",
-      "mine drop 2 официальный сайт",
+      "mine drop 2 обзор",
+      "mine drop 2 rtp",
       "mine drop 2 демо",
       "mine drop 2 слот",
       "майне дроп 2",
     ],
+  },
+  ai: {
+    answerLabel: "Короткий ответ",
+    answer:
+      "Mine Drop 2 — шахтёрский dig-burst слот Paperclip Gaming на Stake Engine с RTP 96.70%, высокой волатильностью и заявленным max win ×50000. Это не Mine Slot 2: другая студия и другая линейка. Сайт minedrop2.vip — независимый обзор, а не страница разработчика.",
+    factsLabel: "Ключевые факты для поиска",
+    facts: [
+      { label: "Игра", value: "Mine Drop 2" },
+      { label: "Провайдер", value: "Paperclip Gaming" },
+      { label: "Движок", value: "Stake Engine" },
+      { label: "RTP", value: "96.70%" },
+      { label: "Max win", value: "×50000" },
+      { label: "Волатильность", value: "Высокая" },
+      { label: "Формат", value: "Дроп 5×3" },
+      { label: "Не путать с", value: "Mine Slot 2 (InOut)" },
+    ],
+    trustLabel: "О сайте",
+    trust:
+      "Материалы обновлены 12 августа 2026. minedrop2.vip не принадлежит Paperclip Gaming и не принимает ставки. Цифры RTP и max win приведены по заявленным параметрам игры; условия площадок проверяйте на стороне оператора.",
   },
   theme: SHARED_THEME,
   game: {
@@ -281,9 +301,12 @@ export const ruConfig = {
       text: "Обзор Mine Drop 2: параметры, механика, интерфейс и площадки для запуска.",
       cta: "Выбрать площадку",
       legal:
-        "18+. Играйте ответственно. Азартные игры могут вызывать зависимость. На сайте используются партнёрские ссылки.",
+        "18+. Играйте ответственно. Азартные игры могут вызывать зависимость. Сайт не является официальной страницей разработчика. Партнёрские ссылки могут быть отключены.",
     },
     schemaOffer: "Демо-режим может быть доступен бесплатно",
+    howToName: "Как играть в Mine Drop 2",
+    howToDescription:
+      "Пошаговая механика dig-burst: дроп 5×3, прокоп шахты, Blast Ore, Ender Eye и контроль ставки.",
     ogTagline: "Играть онлайн",
   },
 } satisfies LandingConfig;

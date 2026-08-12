@@ -16,6 +16,7 @@ export type SeoPageContent = {
   eyebrow: string;
   heading: string;
   intro: string;
+  quickAnswer: string;
   updatedLabel: string;
   highlights: Array<{ label: string; value: string }>;
   sections: Array<{
@@ -39,6 +40,8 @@ const ruPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "Демо Mine Drop 2: изучите раунд до ставки",
     intro:
       "Демо-режим нужен не для прогноза выигрыша, а для знакомства с темпом игры. На этой странице разобраны элементы интерфейса, последовательность dig-burst и функции, которые стоит проверить до запуска на реальные деньги.",
+    quickAnswer:
+      "Демо Mine Drop 2 показывает поле 5×3, dig-burst, Blast Ore, Ender Eye и Bonus Buy без депозита. Доступность зависит от площадки и региона; короткий демо-результат не доказывает RTP 96.70% и не равен игре на деньги.",
     updatedLabel: "Проверено 12 августа 2026",
     highlights: [
       { label: "Формат", value: "Поле 5×3" },
@@ -104,6 +107,8 @@ const ruPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "RTP Mine Drop 2: что означает показатель 96.70%",
     intro:
       "RTP описывает теоретическую долю возврата на очень длинной дистанции. Он полезен для сравнения моделей игры, но не прогнозирует итог одного спина, бонуса или короткой сессии.",
+    quickAnswer:
+      "Заявленный RTP Mine Drop 2 — 96.70% на длинной дистанции. Волатильность высокая, max win ×50000 относится к редким исходам. Bonus Buy повышает стоимость и дисперсию, но не гарантирует лучший результат сессии.",
     updatedLabel: "Проверено 12 августа 2026",
     highlights: [
       { label: "RTP", value: "96.70%" },
@@ -164,6 +169,8 @@ const ruPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "Бонусы Mine Drop 2: отделяем механику от промо",
     intro:
       "В контексте Mine Drop 2 словом «бонус» называют две разные вещи: платную игровую функцию Bonus Buy и промо-предложения площадок. У них разные правила, стоимость и ограничения.",
+    quickAnswer:
+      "Bonus Buy — платная функция внутри Mine Drop 2. Приветственный бонус казино — отдельное промо оператора с вейджером и лимитами. Перед регистрацией сверяйте полные правила на стороне площадки; сайт не принимает ставки.",
     updatedLabel: "Обновлено 12 августа 2026",
     highlights: [
       { label: "Игровая функция", value: "Bonus Buy" },
@@ -224,6 +231,8 @@ const ruPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "Как играть в Mine Drop 2",
     intro:
       "Mine Drop 2 строит раунд вокруг дропа над шахтой. Результативные комбинации продолжают движение вглубь, а специальные элементы меняют поле и потенциальный множитель.",
+    quickAnswer:
+      "В Mine Drop 2 символы формируют дроп 5×3 над шахтой; успешный результат может продолжить dig-burst. Blast Ore расчищает блоки, Ender Eye запускает отдельные события. RTP 96.70% и max ×50000 описывают модель, а не исход одной сессии.",
     updatedLabel: "Проверено 12 августа 2026",
     highlights: [
       { label: "Поле", value: "5×3" },
@@ -286,6 +295,8 @@ const enPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "Mine Drop 2 demo: learn the round before staking",
     intro:
       "Demo mode is useful for learning the pace and controls, not predicting a payout. This guide explains the interface, the dig-burst sequence and the checks to make before using real funds.",
+    quickAnswer:
+      "The Mine Drop 2 demo shows the 5×3 field, dig-burst flow, Blast Ore, Ender Eye and Bonus Buy without a deposit. Availability depends on the platform and region; a short demo sample does not prove the 96.70% RTP or match real-money results.",
     updatedLabel: "Reviewed August 12, 2026",
     highlights: [
       { label: "Format", value: "5×3 field" },
@@ -351,6 +362,8 @@ const enPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "Mine Drop 2 RTP: what 96.70% means",
     intro:
       "RTP describes a theoretical long-run return. It helps compare game models, but it cannot predict one spin, one feature or one short session.",
+    quickAnswer:
+      "Mine Drop 2 states a 96.70% RTP over a long sample. Volatility is high and the ×50000 max win sits in the rare tail. Bonus Buy raises cost and variance; it does not guarantee a better session result.",
     updatedLabel: "Reviewed August 12, 2026",
     highlights: [
       { label: "RTP", value: "96.70%" },
@@ -411,6 +424,8 @@ const enPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "Mine Drop 2 bonuses: game feature versus promotion",
     intro:
       "The word “bonus” can mean two different things here: the paid Bonus Buy feature inside Mine Drop 2 and a promotional offer from a platform. Their rules, costs and restrictions are separate.",
+    quickAnswer:
+      "Bonus Buy is a paid in-game feature in Mine Drop 2. A casino welcome offer is a separate operator promotion with wagering and limits. Read the full platform terms before registering; this site does not accept wagers.",
     updatedLabel: "Updated August 12, 2026",
     highlights: [
       { label: "Game feature", value: "Bonus Buy" },
@@ -471,6 +486,8 @@ const enPages: Record<SeoPageSlug, SeoPageContent> = {
     heading: "How to play Mine Drop 2",
     intro:
       "Mine Drop 2 builds each round around a drop above the mine. Successful combinations can move the field deeper, while special elements reshape the board and potential multiplier.",
+    quickAnswer:
+      "In Mine Drop 2, symbols form a 5×3 drop above the mine and a successful result can continue the dig-burst. Blast Ore clears blocks and Ender Eye triggers separate events. The 96.70% RTP and ×50000 max win describe the model, not one session.",
     updatedLabel: "Reviewed August 12, 2026",
     highlights: [
       { label: "Field", value: "5×3" },

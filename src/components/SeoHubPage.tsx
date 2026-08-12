@@ -31,60 +31,93 @@ export function SeoHubPage({
     en: getSeoPagePath("en", page.slug),
   };
   const playHref = `${config.path}#play`;
-  const schemas = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "@id": `${canonical}#article`,
-        headline: page.heading,
-        description: page.description,
-        url: canonical,
-        inLanguage: config.language,
-        datePublished: config.site.published,
-        dateModified: config.site.updated,
-        image: `${config.site.url}${config.game.cover}`,
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      headline: page.heading,
+      description: page.quickAnswer,
+      url: canonical,
+      inLanguage: config.language,
+      datePublished: config.site.published,
+      dateModified: config.site.updated,
+      image: `${config.site.url}${config.game.cover}`,
+      author: {
+        "@type": "Organization",
+        name: config.site.domain,
+        url: config.site.url,
+      },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [".ai-answer", "#seo-page-title"],
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": `${config.site.url}/#website`,
+        name: config.site.domain,
+        url: config.site.url,
+      },
+      about: {
+        "@type": "SoftwareApplication",
+        name: config.game.name,
+        applicationCategory: "GameApplication",
+        operatingSystem: "Web",
         author: {
           "@type": "Organization",
-          name: config.site.domain,
-          url: config.site.url,
-        },
-        isPartOf: {
-          "@type": "WebSite",
-          "@id": `${config.site.url}/#website`,
-          name: config.site.domain,
-          url: config.site.url,
+          name: config.game.provider,
         },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: config.locale === "ru" ? "Обзор" : "Review",
-            item: homeUrl,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: page.heading,
-            item: canonical,
-          },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: page.faq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
-          },
-        })),
-      },
-    ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: config.locale === "ru" ? "Обзор" : "Review",
+          item: homeUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: page.heading,
+          item: canonical,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: page.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ];
+
+  if (page.slug === "how-to-play") {
+    graph.push({
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      name: config.ui.howToName,
+      description: config.ui.howToDescription,
+      inLanguage: config.language,
+      totalTime: "PT5M",
+      step: config.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: step.title,
+        text: step.text,
+      })),
+    });
+  }
+
+  const schemas = {
+    "@context": "https://schema.org",
+    "@graph": graph,
   };
 
   return (
@@ -102,13 +135,21 @@ export function SeoHubPage({
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href={config.path}>{page.homeLabel}</Link>
               <span aria-hidden="true">/</span>
-              <span>{navigation.find((item) => item.href.endsWith(page.slug))?.label}</span>
+              <span>
+                {navigation.find((item) => item.href.endsWith(page.slug))?.label}
+              </span>
             </nav>
 
             <div className={styles.heroGrid}>
               <div className={styles.heroCopy}>
                 <p className={styles.eyebrow}>{page.eyebrow}</p>
                 <h1 id="seo-page-title">{page.heading}</h1>
+                <p className={`${styles.quickAnswer} ai-answer`}>
+                  <strong>
+                    {config.locale === "ru" ? "Короткий ответ:" : "Quick answer:"}{" "}
+                  </strong>
+                  {page.quickAnswer}
+                </p>
                 <p className={styles.intro}>{page.intro}</p>
                 <p className={styles.updated}>{page.updatedLabel}</p>
                 <div className={styles.actions}>
@@ -162,7 +203,9 @@ export function SeoHubPage({
             <section className={styles.faq} aria-labelledby="hub-faq-title">
               <p className={styles.eyebrow}>FAQ</p>
               <h2 id="hub-faq-title">
-                {config.locale === "ru" ? "Вопросы по теме" : "Questions on this topic"}
+                {config.locale === "ru"
+                  ? "Вопросы по теме"
+                  : "Questions on this topic"}
               </h2>
               {page.faq.map((item) => (
                 <details key={item.question}>
@@ -171,6 +214,11 @@ export function SeoHubPage({
                 </details>
               ))}
             </section>
+
+            <aside className={styles.trustNote}>
+              <p className={styles.eyebrow}>{config.ai.trustLabel}</p>
+              <p>{config.ai.trust}</p>
+            </aside>
           </article>
 
           <aside className={styles.related} aria-labelledby="related-title">

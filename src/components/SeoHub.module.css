@@ -57,6 +57,23 @@
   line-height: 1.7;
 }
 
+.quickAnswer {
+  max-width: 48rem;
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e7e9ee;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.quickAnswer strong {
+  color: var(--accent);
+  font-weight: 850;
+}
+
 .updated {
   margin: 0.8rem 0 0;
   color: #747b86;
@@ -197,6 +214,22 @@
 .faq details p {
   margin: 0;
   padding: 0 0 1.2rem;
+}
+
+.trustNote {
+  max-width: 48rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.trustNote p:last-child {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
 }
 
 .related {
